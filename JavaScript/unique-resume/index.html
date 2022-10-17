@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Unique Resume - Create your own resume now</title>
+    <link rel="icon" href="https://icons.iconarchive.com/icons/graphicloads/long-shadow-documents/256/document-file-icon.png" type="image/x-icon"> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/4e614a1384.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="title-main-div">
+        <div id="title-left-div">
+            <i class="fa-solid fa-file-pen" id="title-icon"></i>
+        </div>
+        <div id="title-right-div">
+            <p id="title">Unique Resume Editor..</p>
+        </div>
+    </div>
+    <div class="list-fields">
+        <button data-page="1" id="button-1" class="page-menu">
+            <i class="fa-sharp fa-solid fa-user"></i>
+            <b>&emsp;Personal Details</b>
+        </button>
+        <button data-page="2" id="button-2" class="page-menu">
+            <i class="fa-solid fa-computer"></i>
+            <b>&emsp;Education</b>
+        </button>
+        <button data-page="3" id="button-3" class="page-menu">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <b>&emsp;Experience</b>
+        </button>
+        <button data-page="4" id="button-4" class="page-menu">
+            <i class="fa-solid fa-gears"></i>
+            <b>&emsp;Skills</b>
+        </button>
+        <button data-page="5" id="button-5" class="page-menu">
+            <i class="fa-solid fa-plus"></i>
+            <b>&emsp;Extra</b>
+        </button>
+        <button data-page="6" id="button-6" class="page-menu">
+            <i class="fa-solid fa-location-dot"></i>
+            <b>&emsp;Summary</b>
+        </button>
+    </div>
+    <div id="gap"></div>
+    <form name="main_form" autocomplete="off" id="main-form-id">
+        <div id="page-1" class="page-details">
+            <div class="form">
+                <div id="personal-details-left-div">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="first-name-label-id">First Name</span>
+                        </div>
+                        <input type="text" id="first-name" name="first_name" class="form-control personal-info"
+                            value="Arulmozhi" placeholder="Arulmozhi" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default">
+                        <span id="fname-error"></span>
+                        <span id="fname-icon"></span>
+                    </div>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="ph-no-label-id">Phone Number</span>
+                        </div>
+                        <input type="text" id="phone-number" name="phone_number" class="form-control personal-info"
+                            value="6374553281" placeholder="6374553281" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default">
+                        <span id="phone-error"></span>
+                        <span id="phone-icon"></span>
+                    </div>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="state-label-id">State</span>
+                        </div>
+                        <input type="text" id="state" name="state" class="form-control personal-info" value="Tamil Nadu"
+                            placeholder="Tamil Nadu" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default">
+                        <span id="state-error"></span>
+                        <span id="state-icon"></span>
+                    </div>
+                    <img id="image-preview"><i class="fa-solid fa-user" id="preview-icon"></i>
+                    <input type="file" class="form-control-file" id="profile-picture" onchange="showImage(this);">
+                    <!-- <img src="C:\Users\ARULMOZHI K\Downloads\preethiCandid.jpeg" id="male-image" style="display: none"> -->
+                    <!-- <div id="image-preview-text"></div> -->
+                </div>
+                <div id="personal-details-right-div">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="last-name-label-id">Last Name</span>
+                        </div>
+                        <input type="text" id="last-name" name="last_name" class="form-control personal-info"
+                            value="Karunagaran" placeholder="Karunagaran" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default">
+                        <span id="lname-error"></span>
+                        <span id="lname-icon"></span>
+                    </div>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="email-label-id">Email</span>
+                        </div>
+                        <input type="text" id="email" name="email" class="form-control personal-info"
+                            value="saruarul154@gmail.com" placeholder="saruarul154@gmail.com"
+                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                        <span id="email-error"></span>
+                        <span id="email-icon"></span>
+                    </div>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="city-label-id">City</span>
+                        </div>
+                        <input type="text" id="city" name="city" class="form-control personal-info" value="Dharmapuri"
+                            placeholder="Dharmapuri" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default">
+                        <span id="city-error"></span>
+                        <span id="city-icon"></span>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="continue-button" id="personal-details-button">Continue</button>
+        </div>
+        <!-- </form>
+
+    <form name="education_info_form" autocomplete="off" id="education-info-form"> -->
+        <div id="page-2" class="page-details">
+            <div class="form">
+                <div id="education-left-div">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="college-name-label-id">College Name</span>
+                        </div>
+                        <input type="text" id="college-name" class="form-control education-info" name="college_name"
+                            value="Bannari Amman Institute Of Technology"
+                            placeholder="Bannari Amman Institute Of Technology" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default">
+                        <span id="college-name-error"></span>
+                        <span id="college-name-icon"></span>
+                    </div>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="college-location-label-id">College Location</span>
+                        </div>
+                        <input type="text" id="college-location" class="form-control education-info"
+                            name="college_location" value="Sathyamangalam" placeholder="Sathyamangalam"
+                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                        <span id="college-location-error"></span>
+                        <span id="college-location-icon"></span>
+                    </div>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="school-name-label-id">School Name</span>
+                        </div>
+                        <input type="text" id="school-name" class="form-control education-info" name="school_name"
+                            value="Kamalam International School" placeholder="Kamalam International School"
+                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                        <span id="school-name-error"></span>
+                        <span id="school-name-icon"></span>
+                    </div>
+                    <div>
+                        <div id="edu-left-main-left-div">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="hsc-percentage-label-id">HSC %</span>
+                                </div>
+                                <input type="number" id="hsc-percentage" class="form-control education-info"
+                                    name="HSC_percentage" value="88" placeholder="88" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default">
+                                <span id="hsc-percentage-error"></span>
+                                <span id="hsc-percentage-icon"></span>
+                            </div>
+                        </div>
+                        <div id="edu-left-main-right-div">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="sslc-percentage-label-id">SSLC %</span>
+                                </div>
+                                <input type="number" id="sslc-percentage" class="form-control education-info"
+                                    name="SSLC_percentage" value="90" placeholder="90" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default">
+                                <span id="sslc-percentage-error"></span>
+                                <span id="sslc-percentage-icon"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="education-right-div">
+                    <div>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="field-of-study-label-id">Field Of Study</span>
+                            </div>
+                            <input type="text" id="field-of-study" class="form-control education-info"
+                                name="field_of_study" value="B.E ECE" placeholder="B.E ECE"
+                                aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            <span id="fos-error"></span>
+                            <span id="fos-icon"></span>
+                        </div>
+                    </div>
+                    <div>
+                        <div id="edu-right-main-left-div">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="edu-end-year-label-id">End Year</span>
+                                </div>
+                                <input type="text" id="edu-end-year" class="form-control education-info" name="end_year"
+                                    value="2023" placeholder="2023" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default">
+                                <span id="edu-end-year-error"></span>
+                                <span id="edu-end-year-icon"></span>
+                            </div>
+                        </div>
+                        <div id="edu-right-main-right-div">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="cgpa-label-id">CGPA</span>
+                                </div>
+                                <input type="number" id="cgpa" class="form-control education-info" name="CGPA"
+                                    value="9.8" placeholder="9.8" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default">
+                                <span id="cgpa-error"></span>
+                                <span id="cgpa-icon"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="school-location-label-id">School Location</span>
+                            </div>
+                            <input type="text" id="school-location" class="form-control education-info"
+                                name="school_location" value="Dharmapuri" placeholder="Dharmapuri"
+                                aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            <span id="school-location-error"></span>
+                            <span id="school-location-icon"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="continue-button" id="education-button">Continue</button>
+        </div>
+        <!-- </form>
+
+    <form name="experience_info_form" autocomplete="off" id="experience-info-form"> -->
+        <div id="page-3" class="page-details">
+            <div class="form">
+                <div id="experience-left-div">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="company-name-label-id">Company Name</span>
+                        </div>
+                        <input type="text" id="company-name" class="form-control experience-info" name="company_name"
+                            value="TrusTrace" placeholder="TrusTrace" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default">
+                        <span id="company-name-error"></span>
+                        <span id="company-name-icon"></span>
+                    </div>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="designation-label-id">Designation</span>
+                        </div>
+                        <input type="text" id="designation" class="form-control experience-info" name="designation"
+                            value="Full Stack Developer" placeholder="Full Stack Developer"
+                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                        <span id="designation-error"></span>
+                        <span id="designation-icon"></span>
+                    </div>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="project-name-label-id">Project Name</span>
+                        </div>
+                        <input type="text" id="project-name" class="form-control experience-info" name="project_name"
+                            value="Resume Builder" placeholder="Resume Builder" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default">
+                        <span id="project-name-error"></span>
+                        <span id="project-name-icon"></span>
+                    </div>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="linkedin-profile-label-id">LinkedIn profile</span>
+                        </div>
+                        <input type="text" id="linkedin-profile" class="form-control experience-info"
+                            name="linkedin_profile" value="www.linkedin.com/in/preethiuthayakumar"
+                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                        <span id="linkedin-error"></span>
+                        <span id="linkedin-icon"></span>
+                    </div>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="github-profile-label-id">Github profile</span>
+                        </div>
+                        <input type="text" id="github-profile" class="form-control experience-info"
+                            name="github_profile" value="https://github.com/Arulmozhi-Karunagaran"
+                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                        <span id="github-error"></span>
+                        <span id="github-icon"></span>
+                    </div>
+                    <!-- <p style="margin-top: 50px; margin-left: 50px">PROJECTS ADD PANNANU</p> -->
+                </div>
+                <div id="experience-right-div">
+                    <div>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="company-location-label-id">Company Location</span>
+                            </div>
+                            <input type="text" id="company-location" class="form-control experience-info"
+                                value="Coimbatore" name="company_location" placeholder="Coimbatore"
+                                aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            <span id="company-location-error"></span>
+                            <span id="company-location-icon"></span>
+                        </div>
+                    </div>
+                    <div>
+                        <div id="exp-right-main-left-div">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="exp-end-year-label-id">End Year</span>
+                                </div>
+                                <input type="number" id="exp-end-year" class="form-control experience-info"
+                                    name="e_end_year" value="2025" placeholder="2025" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default">
+                                <span id="exp-end-year-error"></span>
+                                <span id="exp-end-year-icon"></span>
+                            </div>
+                        </div>
+                        <div id="exp-right-main-right-div">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="exp-start-year-label-id">Start Year</span>
+                                </div>
+                                <input type="number" id="exp-start-year" class="form-control experience-info"
+                                    name="start_year" value="2023" placeholder="2023" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default">
+                                <span id="exp-start-year-error"></span>
+                                <span id="exp-start-year-icon"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <textarea id="text-area-project" class="form-control experience-info" name="project_description"
+                        placeholder="Description of the project "></textarea>
+                    <span id="text-area-project-error"></span>
+                </div>
+            </div>
+            <button type="submit" class="continue-button" id="experience-button">Continue</button>
+        </div>
+        <!-- </form>
+
+    <form name="skills_info_form" autocomplete="off" id="skills-info-form"> -->
+        <div id="page-4" class="page-details">
+            <div class="form">
+                <div id="skills-left-div">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="skills-label-id">Technical Skills</span>
+                        </div>
+                        <input type="text" id="skills-name" class="form-control skills-info technical-skills"
+                            name="technical_skills[]" placeholder="JavaScript" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default" multiple>
+                        <span id="skills-error"></span>
+                        <span id="skills-icon"></span>
+                    </div>
+                    <button id="skill-add-button"> + Add another skill</button>
+                </div>
+                <div id="skills-right-div">
+
+                </div>
+            </div>
+            <button type="submit" class="continue-button" id="skills-button">Continue</button>
+        </div>
+        <!-- </form>
+
+    <form name="extra_info_form" autocomplete="off" id="extra-info-form"> -->
+        <div id="page-5" class="page-details">
+            <div class="form">
+                <div id="extra-left-div">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="birthday-label-id">Birthday</span>
+                        </div>
+                        <input type="date" id="birthday" class="form-control extra-info" name="birthday"
+                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                        <span id="birthday-error"></span>
+                        <span id="birthday-icon"></span>
+                    </div>
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="languages-known-label-id">Languages Known</span>
+                    </div>
+                    <p id="select-disclaimer">Press control <br> and click <br> for multiple <br> options</p>
+                    <select class="select" multiple>
+                        <option class="option" name="option_name">English</option>
+                        <option class="option" name="option_name">Tamil</option>
+                        <option class="option" name="option_name">Hindi</option>
+                        <option class="option" name="option_name">French</option>
+                        <option class="option" name="option_name">Japnese</option>
+                        <option class="option" name="option_name">Telungu</option>
+                        <option class="option" name="option_name">Malayalam</option>
+                        <option class="option" name="option_name">Kannada</option>
+                    </select>
+                    <span id="select-error"></span>
+                    <!-- <button type="submit" class="options-save-button" id="save-button">Save</button> -->
+                </div>
+                <div id="extra-right-div">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="gender-label-id">Gender</span>
+                        </div>
+                        <label for="male" id="male-label-id">Male</label>
+                        <input type="radio" id="male-gender" class="extra-info" name="gender">
+                        <span id="gender-error"></span>
+                        <label for="female" id="female-label-id">Female</label>
+                        <input type="radio" id="female-gender" class="extra-info" name="gender">
+                        <span id="gender-icon"></span>
+                    </div>
+                    <div>
+                        <!-- <p id="text-area-label">Short description about yourself</p> -->
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="description-label-id">Short description about
+                                yourself...<i class="fa-solid fa-down"></i></span>
+                        </div>
+                        <textarea id="text-area" class="form-control extra-info" name="description"
+                            placeholder="In short">
+                    </textarea>
+                        <span id="description-error"></span>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="continue-button" id="extra-button">Continue</button>
+        </div>
+    </form>
+    <div id="page-6" class="page-details">
+        <div class="form">
+            <h3 id="pdf-heading">CLICK HERE TO DOWNLOAD THE PDF</h3>
+            <button id="download-pdf-button" onclick="generatePdf()"><i class="fa-solid fa-file-pdf"></i>&emsp;Click
+                here..</button>
+        </div>
+        <button type="submit" class="continue-button" id="summary-button">Continue</button>
+    </div>
+    <button id="previous-button">Previous</button>
+    </form>
+    <script src=" script.js"></script>
+</body>
+
+</html>
