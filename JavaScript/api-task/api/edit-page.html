@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="edit-page-style.css">  
+</head>
+<body style="background-color:aqua;">
+    <h2>EDIT PAGE</h2>
+    <div class="tooltip">
+        <span class="tooltiptext">Tooltip text</span>
+        <label for="id">ID:&emsp;</label>
+        <input type="text" id="id" class="cursorSelector" style="margin-top:20px" readonly>
+    </div>
+    <label for="title">TITLE:&emsp;</label>
+        <input type="text" id="titleId" style="margin-top:20px"> <br>
+    <label>STATUS:&emsp;</label>
+        <input type="radio" id="trueId" name="status" value="true"  style="margin-top:20px">
+        <label for="true">TRUE</label>
+        <input type="radio" id="falseId" name="status" value="false">
+        <label for="false">FALSE</label><br>
+    <button type="submit" value="update" style="margin-top:20px" onclick="updateName()">UPDATE</button> <br>
+    <button type="submit" value="cancel" style="margin-top:20px" onclick="cancelButton()"">CANCEL</button>
+    <script src="edit-page-script.js"></script>
+</body>
+</html>
