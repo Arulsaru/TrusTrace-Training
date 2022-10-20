@@ -82,7 +82,7 @@ function enableNextPage(page, bool) {
             temp === 0 ? temp = 1 : temp;
             const button = document.getElementById(`button-${temp}`);
             console.log(page, temp);
-            button.style.backgroundColor = 'rgb(0, 255, 0)';
+            button.style.backgroundColor = '#90EE90';
         }
        
         showNextPage(page);
@@ -123,6 +123,7 @@ const pageValidation = (myObjects) => {
                 }
             }
             else if (!element.value.match(myObject.regex)) {
+                console.log(myObject.regex)
                 errorMsg.textContent = `Enter the correct ${name.split('_').join(' ')}`;
             }
             else if (!myObject.max === element.value.length) {                       // logic maathanu
@@ -349,7 +350,7 @@ function validatePersonalDetails() {
     pageValidation(pageOneDatas);
     if (personalDatas.length === correctInputCount) {
         currentPageNumber ? enableNextPage(++currentPageNumber, false) : enableNextPage(++pageNumber, true);
-        pageMenus.style = 'background-color: green !important';
+        pageMenus.style = 'background-color: #90EE90 !important';
     }
 
 }
@@ -544,7 +545,7 @@ let splittedDescription;
 
 function generatePdf() {
     const button = document.getElementById(`button-${6}`);
-    button.style.backgroundColor = 'rgb(0, 255, 0)';
+    button.style.backgroundColor = '#90EE90';
     let doc = new jsPDF({lineHeight: 1.5});
 
     // const inputs = document.querySelectorAll(`.personal-info, .education-info, .experience-info, .extra-info, .technical-skills`);
