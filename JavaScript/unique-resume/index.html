@@ -3,25 +3,24 @@
 
 <head>
     <title>Unique Resume - Create your own resume now</title>
-    <link rel="icon" href="https://icons.iconarchive.com/icons/graphicloads/long-shadow-documents/256/document-file-icon.png" type="image/x-icon"> 
+    <link rel="icon"
+        href="https://icons.iconarchive.com/icons/graphicloads/long-shadow-documents/256/document-file-icon.png"
+        type="image/x-icon">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/4e614a1384.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
 </head>
 
 <body>
     <div id="title-main-div">
-        <div id="title-left-div">
-            <i class="fa-solid fa-file-pen" id="title-icon"></i>
-        </div>
-        <div id="title-right-div">
-            <p id="title">Unique Resume Editor..</p>
-        </div>
     </div>
     <div class="list-fields">
         <button data-page="1" id="button-1" class="page-menu">
@@ -49,40 +48,31 @@
             <b>&emsp;Summary</b>
         </button>
     </div>
-    <div id="gap"></div>
+    <!-- <div id="gap"></div> -->
     <form name="main_form" autocomplete="off" id="main-form-id">
         <div id="page-1" class="page-details">
             <div class="form">
                 <div id="personal-details-left-div">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="first-name-label-id">First Name</span>
-                        </div>
+                    <div class="form-floating mb-3">
                         <input type="text" id="first-name" name="first_name" class="form-control personal-info"
-                            value="Arulmozhi" placeholder="Arulmozhi" aria-label="Sizing example input"
-                            aria-describedby="inputGroup-sizing-default">
+                            value="Arulmozhi" placeholder="Arulmozhi">
                         <span id="fname-error"></span>
                         <span id="fname-icon"></span>
+                        <label>First Name</label>
                     </div>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="ph-no-label-id">Phone Number</span>
-                        </div>
+                    <div class="form-floating mb-3">
                         <input type="text" id="phone-number" name="phone_number" class="form-control personal-info"
-                            value="6374553281" placeholder="6374553281" aria-label="Sizing example input"
-                            aria-describedby="inputGroup-sizing-default">
+                            value="6374553281" placeholder="6374553281">
                         <span id="phone-error"></span>
                         <span id="phone-icon"></span>
+                        <label>Phone Number</label>
                     </div>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="state-label-id">State</span>
-                        </div>
+                    <div class="form-floating mb-3">
                         <input type="text" id="state" name="state" class="form-control personal-info" value="Tamil Nadu"
-                            placeholder="Tamil Nadu" aria-label="Sizing example input"
-                            aria-describedby="inputGroup-sizing-default">
+                            placeholder="Tamil Nadu">
                         <span id="state-error"></span>
                         <span id="state-icon"></span>
+                        <label>State</label>
                     </div>
                     <img id="image-preview"><i class="fa-solid fa-user" id="preview-icon"></i>
                     <input type="file" class="form-control-file" id="profile-picture" onchange="showImage(this);">
@@ -90,100 +80,74 @@
                     <!-- <div id="image-preview-text"></div> -->
                 </div>
                 <div id="personal-details-right-div">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="last-name-label-id">Last Name</span>
-                        </div>
+                    <div class="form-floating mb-3">
                         <input type="text" id="last-name" name="last_name" class="form-control personal-info"
-                            value="Karunagaran" placeholder="Karunagaran" aria-label="Sizing example input"
-                            aria-describedby="inputGroup-sizing-default">
+                            value="Karunagaran" placeholder="Karunagaran">
                         <span id="lname-error"></span>
                         <span id="lname-icon"></span>
+                        <label>Last Name</label>
                     </div>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="email-label-id">Email</span>
-                        </div>
+                    <div class="form-floating mb-3">
                         <input type="text" id="email" name="email" class="form-control personal-info"
-                            value="saruarul154@gmail.com" placeholder="saruarul154@gmail.com"
-                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            value="saruarul154@gmail.com" placeholder="saruarul154@gmail.com">
                         <span id="email-error"></span>
                         <span id="email-icon"></span>
+                        <label>Email</label>
                     </div>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="city-label-id">City</span>
-                        </div>
+                    <div class="form-floating mb-3">
                         <input type="text" id="city" name="city" class="form-control personal-info" value="Dharmapuri"
-                            placeholder="Dharmapuri" aria-label="Sizing example input"
-                            aria-describedby="inputGroup-sizing-default">
+                            placeholder="Dharmapuri">
                         <span id="city-error"></span>
                         <span id="city-icon"></span>
+                        <label>City</label>
                     </div>
                 </div>
             </div>
-            <button type="submit" class="continue-button" id="personal-details-button">Continue</button>
+            <button type="submit" class="btn btn-primary continue-button" id="personal-details-button">Next</button>
         </div>
-        <!-- </form>
 
-    <form name="education_info_form" autocomplete="off" id="education-info-form"> -->
         <div id="page-2" class="page-details">
             <div class="form">
                 <div id="education-left-div">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="college-name-label-id">College Name</span>
-                        </div>
+                    <div class="form-floating mb-3">
                         <input type="text" id="college-name" class="form-control education-info" name="college_name"
                             value="Bannari Amman Institute Of Technology"
-                            placeholder="Bannari Amman Institute Of Technology" aria-label="Sizing example input"
-                            aria-describedby="inputGroup-sizing-default">
+                            placeholder="Bannari Amman Institute Of Technology">
                         <span id="college-name-error"></span>
                         <span id="college-name-icon"></span>
+                        <label>College Name</label>
                     </div>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="college-location-label-id">College Location</span>
-                        </div>
+                    <div class="form-floating mb-3">
                         <input type="text" id="college-location" class="form-control education-info"
-                            name="college_location" value="Sathyamangalam" placeholder="Sathyamangalam"
-                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            name="college_location" value="Sathyamangalam" placeholder="Sathyamangalam">
                         <span id="college-location-error"></span>
                         <span id="college-location-icon"></span>
+                        <label>College Location</label>
                     </div>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="school-name-label-id">School Name</span>
-                        </div>
+                    <div class="form-floating mb-3">
                         <input type="text" id="school-name" class="form-control education-info" name="school_name"
-                            value="Kamalam International School" placeholder="Kamalam International School"
-                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            value="Kamalam International School" placeholder="Kamalam International School">
                         <span id="school-name-error"></span>
                         <span id="school-name-icon"></span>
+                        <label>School Name</label>
                     </div>
                     <div>
                         <div id="edu-left-main-left-div">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="hsc-percentage-label-id">HSC %</span>
-                                </div>
+                            <div class="form-floating mb-3">
                                 <input type="number" id="hsc-percentage" class="form-control education-info"
-                                    name="HSC_percentage" value="88" placeholder="88" aria-label="Sizing example input"
-                                    aria-describedby="inputGroup-sizing-default">
+                                    name="HSC_percentage" value="88" placeholder="88">
                                 <span id="hsc-percentage-error"></span>
                                 <span id="hsc-percentage-icon"></span>
+                                <label>HSC Percentage</label>
                             </div>
                         </div>
                         <div id="edu-left-main-right-div">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="sslc-percentage-label-id">SSLC %</span>
-                                </div>
+                            <div class="form-floating mb-3">
                                 <input type="number" id="sslc-percentage" class="form-control education-info"
-                                    name="SSLC_percentage" value="90" placeholder="90" aria-label="Sizing example input"
-                                    aria-describedby="inputGroup-sizing-default">
+                                    name="SSLC_percentage" value="90" placeholder="90">
                                 <span id="sslc-percentage-error"></span>
                                 <span id="sslc-percentage-icon"></span>
+                                <label>SSLC Percentage</label>
                             </div>
                         </div>
                     </div>
@@ -191,58 +155,46 @@
 
                 <div id="education-right-div">
                     <div>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="field-of-study-label-id">Field Of Study</span>
-                            </div>
+                        <div class="form-floating mb-3">
                             <input type="text" id="field-of-study" class="form-control education-info"
-                                name="field_of_study" value="B.E ECE" placeholder="B.E ECE"
-                                aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                name="field_of_study" value="B.E ECE" placeholder="B.E ECE">
                             <span id="fos-error"></span>
                             <span id="fos-icon"></span>
+                            <label>Field Of Study</label>
                         </div>
                     </div>
                     <div>
                         <div id="edu-right-main-left-div">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="edu-end-year-label-id">End Year</span>
-                                </div>
+                            <div class="form-floating mb-3">
                                 <input type="text" id="edu-end-year" class="form-control education-info" name="end_year"
-                                    value="2023" placeholder="2023" aria-label="Sizing example input"
-                                    aria-describedby="inputGroup-sizing-default">
+                                    value="2023" placeholder="2023">
                                 <span id="edu-end-year-error"></span>
                                 <span id="edu-end-year-icon"></span>
+                                <label>End Year</label>
                             </div>
                         </div>
                         <div id="edu-right-main-right-div">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="cgpa-label-id">CGPA</span>
-                                </div>
+                            <div class="form-floating mb-3">
                                 <input type="number" id="cgpa" class="form-control education-info" name="CGPA"
-                                    value="9.8" placeholder="9.8" aria-label="Sizing example input"
-                                    aria-describedby="inputGroup-sizing-default">
+                                    value="9.8" placeholder="9.8">
                                 <span id="cgpa-error"></span>
                                 <span id="cgpa-icon"></span>
+                                <label>CGPA</label>
                             </div>
                         </div>
-                    </div>
+                    </div> <br><br><br> <br>
                     <div>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="school-location-label-id">School Location</span>
-                            </div>
+                        <div class="form-floating mb-3">
                             <input type="text" id="school-location" class="form-control education-info"
-                                name="school_location" value="Dharmapuri" placeholder="Dharmapuri"
-                                aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                name="school_location" value="Dharmapuri" placeholder="Dharmapuri">
                             <span id="school-location-error"></span>
                             <span id="school-location-icon"></span>
+                            <label>School Location</label>
                         </div>
                     </div>
                 </div>
             </div>
-            <button type="submit" class="continue-button" id="education-button">Continue</button>
+            <button type="submit" class="btn btn-primary continue-button" id="education-button">Next</button>
         </div>
         <!-- </form>
 
@@ -250,104 +202,82 @@
         <div id="page-3" class="page-details">
             <div class="form">
                 <div id="experience-left-div">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="company-name-label-id">Company Name</span>
-                        </div>
+                    <div class="form-floating mb-3">
                         <input type="text" id="company-name" class="form-control experience-info" name="company_name"
-                            value="TrusTrace" placeholder="TrusTrace" aria-label="Sizing example input"
-                            aria-describedby="inputGroup-sizing-default">
+                            value="TrusTrace" placeholder="TrusTrace">
                         <span id="company-name-error"></span>
                         <span id="company-name-icon"></span>
+                        <label>Company Name</label>
                     </div>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="designation-label-id">Designation</span>
-                        </div>
+                    <div class="form-floating mb-3">
                         <input type="text" id="designation" class="form-control experience-info" name="designation"
-                            value="Full Stack Developer" placeholder="Full Stack Developer"
-                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            value="Full Stack Developer" placeholder="Full Stack Developer">
                         <span id="designation-error"></span>
                         <span id="designation-icon"></span>
+                        <label>Designation</label>
                     </div>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="project-name-label-id">Project Name</span>
-                        </div>
+                    <div class="form-floating mb-3">
                         <input type="text" id="project-name" class="form-control experience-info" name="project_name"
-                            value="Resume Builder" placeholder="Resume Builder" aria-label="Sizing example input"
-                            aria-describedby="inputGroup-sizing-default">
+                            value="Resume Builder" placeholder="Resume Builder">
                         <span id="project-name-error"></span>
                         <span id="project-name-icon"></span>
+                        <label>Project Name</label>
                     </div>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="linkedin-profile-label-id">LinkedIn profile</span>
-                        </div>
+                    <div class="form-floating mb-3">
                         <input type="text" id="linkedin-profile" class="form-control experience-info"
-                            name="linkedin_profile" value="www.linkedin.com/in/preethiuthayakumar"
-                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            name="linkedin_profile" value="www.linkedin.com/in/preethiuthayakumar">
                         <span id="linkedin-error"></span>
                         <span id="linkedin-icon"></span>
+                        <label>Linkedin Profile</label>
                     </div>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="github-profile-label-id">Github profile</span>
-                        </div>
+                    <div class="form-floating mb-3">
                         <input type="text" id="github-profile" class="form-control experience-info"
-                            name="github_profile" value="https://github.com/Arulmozhi-Karunagaran"
-                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            name="github_profile" value="https://github.com/Arulmozhi-Karunagaran">
                         <span id="github-error"></span>
                         <span id="github-icon"></span>
+                        <label>Github Profile</label>
                     </div>
                     <!-- <p style="margin-top: 50px; margin-left: 50px">PROJECTS ADD PANNANU</p> -->
                 </div>
                 <div id="experience-right-div">
                     <div>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="company-location-label-id">Company Location</span>
-                            </div>
+                        <div class="form-floating mb-3">
                             <input type="text" id="company-location" class="form-control experience-info"
-                                value="Coimbatore" name="company_location" placeholder="Coimbatore"
-                                aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                value="Coimbatore" name="company_location" placeholder="Coimbatore">
                             <span id="company-location-error"></span>
                             <span id="company-location-icon"></span>
+                            <label>Company Location</label>
                         </div>
                     </div>
-                    <div>
-                        <div id="exp-right-main-left-div">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="exp-end-year-label-id">End Year</span>
-                                </div>
-                                <input type="number" id="exp-end-year" class="form-control experience-info"
-                                    name="e_end_year" value="2025" placeholder="2025" aria-label="Sizing example input"
-                                    aria-describedby="inputGroup-sizing-default">
-                                <span id="exp-end-year-error"></span>
-                                <span id="exp-end-year-icon"></span>
-                            </div>
-                        </div>
-                        <div id="exp-right-main-right-div">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="exp-start-year-label-id">Start Year</span>
-                                </div>
-                                <input type="number" id="exp-start-year" class="form-control experience-info"
-                                    name="start_year" value="2023" placeholder="2023" aria-label="Sizing example input"
-                                    aria-describedby="inputGroup-sizing-default">
-                                <span id="exp-start-year-error"></span>
-                                <span id="exp-start-year-icon"></span>
-                            </div>
+                    <div id="exp-left-child-left-div">
+                        <div class="form-floating mb-3">
+                            <input type="number" id="exp-end-year" class="form-control experience-info"
+                                name="e_end_year" value="2025" placeholder="2025">
+                            <span id="exp-end-year-error"></span>
+                            <span id="exp-end-year-icon"></span>
+                            <label>End Year</label>
                         </div>
                     </div>
-
-                    <textarea id="text-area-project" class="form-control experience-info" name="project_description"
-                        placeholder="Description of the project "></textarea>
-                    <span id="text-area-project-error"></span>
+                    <div id="exp-left-child-right-div">
+                        <div class="form-floating mb-3">
+                            <input type="number" id="exp-start-year" class="form-control experience-info"
+                                name="start_year" value="2023" placeholder="2023">
+                            <span id="exp-start-year-error"></span>
+                            <span id="exp-start-year-icon"></span>
+                            <label>Start Year</label>
+                        </div>
+                    </div> <br>
+                    <div class="form-floating">
+                        <textarea id="text-area-project" class="form-control experience-info" name="project_description"
+                            placeholder="Description of the project" style="height: 100px"></textarea>
+                        <span id="text-area-project-error"></span>
+                        <span id="text-area-project-icon"></span>
+                        <label>Project Description</label>
+                    </div>
                 </div>
             </div>
-            <button type="submit" class="continue-button" id="experience-button">Continue</button>
+            <button type="submit" class="btn btn-primary continue-button" id="experience-button">Next</button>
+        </div>
         </div>
         <!-- </form>
 
@@ -371,7 +301,7 @@
 
                 </div>
             </div>
-            <button type="submit" class="continue-button" id="skills-button">Continue</button>
+            <button type="submit" class="btn btn-primary continue-button" id="skills-button">Next</button>
         </div>
         <!-- </form>
 
@@ -430,7 +360,7 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" class="continue-button" id="extra-button">Continue</button>
+            <button type="submit" class="btn btn-primary continue-button" id="extra-button">Next</button>
         </div>
     </form>
     <div id="page-6" class="page-details">
@@ -439,9 +369,9 @@
             <button id="download-pdf-button" onclick="generatePdf()"><i class="fa-solid fa-file-pdf"></i>&emsp;Click
                 here..</button>
         </div>
-        <button type="submit" class="continue-button" id="summary-button">Continue</button>
+        <button type="submit" class="btn btn-primary continue-button" id="summary-button">Next</button>
     </div>
-    <button id="previous-button">Previous</button>
+    <button class="btn btn-primary" id="previous-button">Previous</button>
     </form>
     <script src=" script.js"></script>
 </body>

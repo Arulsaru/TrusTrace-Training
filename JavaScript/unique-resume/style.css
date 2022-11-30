@@ -1,6 +1,7 @@
 body {
     /* background-color: rgb(26, 255, 251) !important; */
-    background-color:rgb(188, 238, 255) !important;
+    background-color: #130043 !important;
+    color: white
 }
 
 #title {
@@ -29,24 +30,47 @@ body {
     flex-wrap: wrap;
     /* align-items: center; */
     /* padding: 5px; */
+    /* width: 10%; */
     padding-left: 30px;
-    border-color: red;
+    font-family: No automatic language associations;
     /* background-color:  rgb(180, 255, 219); */
     /* background-color: darkgrey; */
+    margin-top: 20px;
 }
 
-.list-fields>button:hover {
+.list-fields>button:hover:not([disabled]) {
     transform: scale(1.1); 
-    color: black;
-    font-size: 19px;
+    color: darkgreen !important;
+    border-color: rgb(33, 255, 125) !important;
+    font-size: 15px;
     cursor: pointer;
+    transition: width 1s, height 1s, transform 0.5s;
+}
+
+.list-fields>button:not([disabled]) {
+    color: white !important;
+    border-color: white !important;
+}
+/* 
+.list-fields>button:not([enabled]) {
+    color: rgb(123, 123, 123) !important;
+    border-color: rgb(120, 120, 120) !important;
+} */
+
+.list-fields>button:hover:not([enabled]) {
+    color: red;
+    border-color: red;
 }
 
 .page-menu {
     height: 50px;
     width: 200px;
-    background-color: white;
-    border-style: outset !important;
+    background-color: #130043;
+    color: white;
+    border: 1px solid white;
+    border-radius: 10px;
+    margin-left: 5px;
+    /* border-style: outset !important; */
     /* border-color: green; */
 }
 
@@ -56,25 +80,43 @@ body {
     justify-content: center !important;
     height: auto;
     position: relative;
-    /* top: 10px; */
-    left: 30px;
-    width: 1200px;
+    top: 40px;
+    left: 30px !important;
+    width: 920px;
     height: 450px;
+    color: white !important;
     /* border: 10px solid; */
     /* border-style: inset !important; */
-    background-image: linear-gradient(to top, rgba(255, 0, 0, 0), white) !important;
+    /* background-image: linear-gradient(to top, #351f6c, #1e0360) !important; */
+    /* background-color: #ffffff; */
 }
 
-#gap {
+/* #gap {
     height: 10px !important;
     width: 1200px;
     background-color: white;
     margin-left: 30px;
+} */
+
+input, textarea {
+    /* border-bottom: 1px solid white !important; */
+    /* border-bottom: none !important; */
+    border-top: none !important;
+    /* border-left: none !important; */
+    border-right: none !important; 
+    width: 350px !important;
+    /* height: 70px !important; */
+    color: white !important;
+    background-color: #130043 !important;
+    /* border-radius: 0px !important; */
 }
 
-#form-1 {
-    height: 500px;
+.form-control:focus, .form-select:focus {
+    border-color: none !important;
+    /* border-top: none !important; */
+    box-shadow: none !important;
 }
+
 
 .form-control-file {
     margin-bottom: 30px;
@@ -82,9 +124,10 @@ body {
     cursor: pointer;
 }
 
-#image-preview {
-    margin-top: 50px;
-    margin-left: 60px;
+#image-preview  {
+    position: absolute;
+    top: 70px;
+    left: 900px;
     border-radius: 500px;
     border: solid;
     width: 130px;
@@ -92,16 +135,16 @@ body {
 }
 
 #preview-icon {
-    position: relative;
-    top: 40px;
-    right: 86px;
     font-size: 50px;
+    position: absolute;
+    top: 105px;
+    left: 940px;
 }
 
 input[type=file] {
-    position: relative;
-    bottom: 80px;
-    left: 220px;
+    position: absolute;
+    left: 880px;
+    bottom: 150px;
 }
 
 #personal-details-left-div,
@@ -109,9 +152,8 @@ input[type=file] {
 #experience-left-div,
 #skills-left-div,
 #extra-left-div {
-    width: 500px;
+    width: 400px;
     padding-right: 40px;
-    /* background-color: blue; */
 }
 
 #personal-details-right-div,
@@ -120,8 +162,7 @@ input[type=file] {
 #skills-right-div,
 #extra-right-div {
     width: 500px;
-    padding-right: 40px;
-    /* background-color: yellow; */
+    padding-right: 0px !important;
 }
 
 #first-name,
@@ -153,15 +194,6 @@ input[type=file] {
     margin-right: 30px;
     /* margin-left: 100px; */
     margin-top: 50px;
-}
-
-#cgpa,
-#edu-end-year,
-#hsc-percentage,
-#sslc-percentage,
-#exp-end-year,
-#exp-start-year {
-    margin-right: -30px !important;
 }
 
 #skills-name {
@@ -217,18 +249,27 @@ input[type=file] {
 #skills-icon,
 #state-icon,
 #city-icon,
-#edu-end-year-icon,
-#cgpa-icon,
 #school-name-icon,
 #school-location-icon,
-#sslc-percentage-icon,
-#hsc-percengtage-icon,
 #birthday-icon,
-#gender-icon {
+#gender-icon,
+#text-area-project-icon  {
     position: absolute;
-    top: 56px;
-    left: 400px;
+    top: 17px;
+    left: 320px;
 }
+
+#hsc-percentage-icon,
+#sslc-percentage-icon,
+#edu-end-year-icon,
+#cgpa-icon,
+#exp-start-year-icon,
+#exp-end-year-icon {
+    position: absolute;
+    bottom: 17px;
+    left: 120px;
+}
+
 
 #fname-error,
 #phone-error,
@@ -248,8 +289,6 @@ input[type=file] {
 #text-area-project-error,
 #state-error,
 #city-error,
-#cgpa-error,
-#edu-end-year-error,
 #school-name-error,
 #school-location-error,
 #sslc-percentage-error,
@@ -257,14 +296,13 @@ input[type=file] {
 #birthday-error,
 #gender-error {
     position: absolute;
-    top: 95px;
-    left: 60px;
+    top: 65px;
+    left: 0px;
     color: red;
 }
 
 #text-area-project-error {
-    margin-top: 210px;
-    margin-left: 600px;
+    margin-top: 50px;
 }
 
 #description-error {
@@ -316,27 +354,42 @@ input[type=file] {
 
 #edu-right-main-left-div,
 #edu-right-main-right-div,
-#exp-right-main-left-div,
-#exp-right-main-right-div {
-    float: left;
-    width: 200px;
-    /* padding: 10px;
-    margin-top: 40px; */
-}
-
 #edu-left-main-left-div,
-#edu-left-main-right-div {
-    float: left;
-    width: 200px;
+#edu-left-main-right-div,
+#exp-left-child-right-div,
+#exp-left-child-left-div {
+   width: 180px;
+   float: left
 }
 
-.continue-button {
-    position: relative;
-    left: 950px;
-    bottom: 90px;
+#edu-end-year, 
+#cgpa,
+#hsc-percentage,
+#sslc-percentage,
+#exp-start-year,
+#exp-end-year {
+    width: 150px !important;
+}
+
+/* #edu-left-main-right-div,
+#edu-right-main-right-div {
+    margin-left: 55px;
+} */
+
+.continue-button,
+#previous-button {
+    position: absolute;
+    left: 690px;
+    bottom: 60px;
     width: 100px;
     height: 40px;
-    background-color: whitesmoke;
+    color: black !important;;
+    background-color: white !important;
+}
+
+#previous-button {
+    position: absolute !important;
+    left: 570px !important;
 }
 
 #add-degree-button {
@@ -353,15 +406,6 @@ input[type=file] {
     top: -37px;
     left: 480px;
     height: 37px;
-    background-color: whitesmoke;
-}
-
-#previous-button {
-    position: relative;
-    bottom: 130px;
-    left: 830px;
-    height: 40px;
-    width: 100px;
     background-color: whitesmoke;
 }
 
@@ -397,14 +441,14 @@ input[type=radio] {
     left: 50px;
 }
 
-#text-area,
+/* #text-area,
 #text-area-project {
     position: relative;
     top: 20px;
     left: 50px;
     width: 380px;
     height: 70px;
-}
+} */
 
 #text-area-project {
     margin-top: 120px !important;

@@ -61,6 +61,7 @@ function showNextPage(pageIdx) {
 enableNextPage(1, true); // enable pandrathuku initial uh
 
 function enableNextPage(page, bool) {
+
     if (pageLoad) {
         if (page === 1) {
             let ctr = 2;
@@ -68,6 +69,7 @@ function enableNextPage(page, bool) {
                 const button = document.getElementById(`button-${ctr}`);
                 button.disabled = true;
                 button.style.cursor = 'not-allowed';
+                    
                 ctr += 1;
             }
         }
@@ -77,16 +79,18 @@ function enableNextPage(page, bool) {
         const button = document.getElementById(`button-${page}`);
         button.disabled = false;
         button.style.cursor = 'pointer';
+        
         if(true && bool) {
             let temp = page - 1;
             temp === 0 ? temp = 1 : temp;
             const button = document.getElementById(`button-${temp}`);
             console.log(page, temp);
-            button.style.backgroundColor = '#90EE90';
+            button.style.backgroundColor = 'lightgreen';
         }
        
         showNextPage(page);
     }
+
 }
 
 const elements = document.querySelectorAll('.technical-skills');
@@ -108,9 +112,9 @@ const pageValidation = (myObjects) => {
             const errorMsg = element.nextElementSibling;
             const errorIcon = errorMsg.nextElementSibling;
 
-            if (element.value === '' ) 
+            if (element.value === '' ) {
             // && ( ! element.checked && (temp = 1))
-            {
+
                 if(temp) {
                     genderError.textContent = 'bla bla';
                 }
@@ -118,23 +122,25 @@ const pageValidation = (myObjects) => {
                     errorMsg.textContent = `${name[0].toUpperCase()}${name.slice(1, name.length).split('_').join(' ')} is required`;
                     genderError.textContent = '';
                 }
-                if(errorIcon) {
-                    errorIcon.innerHTML = '<i style="color: red"; class="fa-solid fa-xmark"></i>';
-                }
+
+                displayErrorMessage(errorIcon);
             }
             else if (!element.value.match(myObject.regex)) {
                 console.log(myObject.regex)
                 errorMsg.textContent = `Enter the correct ${name.split('_').join(' ')}`;
+                displayErrorMessage(errorIcon);
             }
             else if (!myObject.max === element.value.length) {                       // logic maathanu
                 errorMsg.textContent = `${name.split('_').join(' ')} should be of ${myObject.max} characters`;
+                displayErrorMessage(errorIcon);
             }
             else {
                 errorMsg.textContent = '';
                 genderError.textContent = '';
-                // errorIcon.innerHTML = '<i style="font-size:20px; color: green;" class="fa">&#10003;</i>';
+                errorIcon ? errorIcon.innerHTML = '<i style="font-size:20px; color: green;" class="fa">&#10003;</i>':'';
                 correctInputCount += 1;
             }
+
         }
         else {
             const elements = document.querySelectorAll(`.technical-skills`);
@@ -157,9 +163,18 @@ const pageValidation = (myObjects) => {
                 }
             }
         }
+
         idx += 1;
     }
     return correctInputCount;
+}
+
+function displayErrorMessage(errorIcon) {
+
+    if(errorIcon) {
+        errorIcon.innerHTML = '<i style="color: red"; class="fa-solid fa-xmark"></i>';
+    }
+
 }
 
 const pageOneDatas = [
@@ -348,9 +363,14 @@ summaryContinueButton.addEventListener('click', function(event) {
 
 function validatePersonalDetails() {
     pageValidation(pageOneDatas);
+
     if (personalDatas.length === correctInputCount) {
-        currentPageNumber ? enableNextPage(++currentPageNumber, false) : enableNextPage(++pageNumber, true);
-        pageMenus.style = 'background-color: #90EE90 !important';
+
+        // setTimeout(() => {
+            currentPageNumber ? enableNextPage(++currentPageNumber, false) : enableNextPage(++pageNumber, true);
+            pageMenus.style = 'background-color: #90EE90 !important';
+        // }, 2000)
+
     }
 
 }
@@ -544,6 +564,8 @@ let selectedGender;
 let splittedDescription;
 
 function generatePdf() {
+    swal("Your resume is being downloaded..Kindly check your downloads", "success");  
+    console.log(datas);
     const button = document.getElementById(`button-${6}`);
     button.style.backgroundColor = '#90EE90';
     let doc = new jsPDF({lineHeight: 1.5});
@@ -745,567 +767,3 @@ function addLanguagesInsidePdf(doc) {
     }
 
 }
-
-    // const firstName = document.getElementById('first-name').value;
-    // const lastName = document.getElementById('last-name').value;
-    // const phoneNumber = document.getElementById('phone-number').value;
-    // const email = document.getElementById('email').value;
-    // const state = document.getElementById('state').value;
-    // const city = document.getElementById('city').value;
-    // const image = document.getElementById('profile-picture').value;
-
-    // const collegeName = document.getElementById('college-name').value;
-    // const course = document.getElementById('field-of-study').value;
-    // const collegeLocation = document.getElementById('college-location').value;
-    // const endYear = document.getElementById('end-year').value;
-
-    // const schoolName = document.getElementById('school-name').value;
-    // const schoolLocation = document.getElementById('school-location').value;
-    // const hscPercentage = document.getElementById('hsc-percentage').value;
-    // const sslcPercentage = document.getElementById('sslc-percentage').value; 
-
-
-    // const description = document.getElementById('text-area').value;
-    // const spilittedDescription = doc.splitTextToSize(description, 200);
-
-
-    // doc.setFontSize(20);
-    // doc.text(firstName.toUpperCase() + ' ' + lastName.toUpperCase(), 55, 20);
-    // doc.setFontSize(12);
-    // // doc.lineHeight(1.5);
-    // doc.text(spilittedDescription, 55, 30);
-    // doc.setLineWidth(0.5);
-    // doc.line(0, 65, 220, 65);
-
-    // doc.setFontSize(15);
-    // doc.setFontType('bold');
-    // doc.text('CONTACT DETAILS', 10, 80);
-    // doc.setFontSize(12);
-    // doc.setFontType('normal');
-
-    // // doc.setFont('fa-solid-900', 'normal');
-    // // doc.setFontSize(10);
-    // doc.text('+91 ' + phoneNumber, 15, 95);
-    // doc.text( email, 15, 105);
-    // doc.text(state + ', ' + city, 15, 115);
-    // // doc.text(city, 15, 125);
-
-    // doc.setFontSize(15);
-    // doc.setFontType('bold');
-    // doc.text('ACADEMIC DETAILS', 120, 80);
-    // doc.setFontSize(13);
-    // doc.setFontType('normal');
-    // doc.text('\u2022   ' + collegeName, 100, 95);
-    // doc.text(course + '  -  ' + endYear + ' - batch', 100, 105);
-    // doc.text(collegeLocation, 100, 115);
-
-    // doc.text('\u2022   ' + schoolName, 100, 130);
-    // doc.text('HSC - ' + hscPercentage + ' %, ' + 'SSLC - ' + sslcPercentage + ' %', 100, 140);
-    // doc.text(schoolLocation, 100, 150);
-
-    // doc.setFontSize(15);
-    // doc.setFontType('bold');
-
-    // doc.text('TECHNICAL SKILLS', 10, 135);
-    // addSkillInsidePdf(doc);
-    
-
-    // doc.addImage(image.value, 'PNG', 40, 20, 100, 100, 'profile-picture');
-
-
-
-
-
-// form-id-submit ---> serialize array -- object
-// Array ku className vechi loop pottu kudukanu
-
-
-
-// const pageMenus = document.getElementsByClassName('page-menu');
-// let outerIdx = 0;
-// while (outerIdx < pageMenus.length) {
-//     const pageMenu = pageMenus[outerIdx];
-
-//     pageMenu.addEventListener('click', function (event) {
-//         const page = this.getAttribute('data-page');
-//         nextPage(page);
-//     });
-
-//     outerIdx += 1;
-// }
-
-// nextPage(1);  // 1 ah maathanu
-
-// function nextPage(pageIdx) {
-//     let innerIdx = 0;
-//     const pageDetails = document.getElementsByClassName('page-details');
-
-//     while (innerIdx < pageDetails.length) {
-//         const pageDetail = pageDetails[innerIdx];
-//         pageDetail.style = 'display: none';
-//         innerIdx += 1;
-//     }
-
-//     document.getElementById(`page-${pageIdx}`).style = '';
-
-// }
-
-// const firstNameErrorMsg = document.getElementById('fname-error');
-// const lastNameErrorMsg = document.getElementById('lname-error');
-// const phoneNumberErrorMsg = document.getElementById('phone-error');
-// const emailErrorMsg = document.getElementById('email-error');
-
-// const fName = document.getElementById('first-name');
-// const lName = document.getElementById('last-name');
-// const phone = document.getElementById('phone-number');
-// const email = document.getElementById('email');
-
-// const fnameIcon = document.getElementById('fname-icon');
-// const lnameIcon = document.getElementById('lname-icon');
-// const phoneNumberIcon = document.getElementById('phone-icon');
-// const emailIcon = document.getElementById('email-icon');
-
-// const personalDatas = document.getElementsByClassName('personal-info');
-
-// let count = 0;
-// nextPageEnable(1);
-
-// function nextPageEnable(page) {
-//     if (page === 1) {
-//         let ctr = 2;
-//         while (ctr <= pageMenus.length) {
-//             const button = document.getElementById(`button-${ctr}`);
-//             button.disabled = true;
-//             button.style.cursor = 'not-allowed';
-//             ctr += 1;
-//         }
-//     }
-//     else {
-//         const button = document.getElementById(`button-${page}`);
-//         button.disabled = false;
-//         button.style.cursor = 'pointer';
-//         nextPage(page);
-//     }
-// }
-
-// document.getElementById('personal-details-button').addEventListener('click', personalDetailsValidation);
-// document.getElementById('education-button').addEventListener('click', educationDetailsValidation);
-// document.getElementById('experience-button').addEventListener('click', experienceValidation);
-// document.getElementById('skills-button').addEventListener('click', skillsValidation);
-// document.getElementById('address-button').addEventListener('click', next);
-// document.getElementById('summary-button').addEventListener('click', next);
-
-// let pageNo = 2;
-
-// function next() {
-//     nextPageEnable(pageNo++);
-// }
-
-// // ----------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-// function personalDetailsValidation() {
-//     count = 0;
-//     validateFirstName();
-//     validateLastName();
-//     validatePhoneNumber();
-//     validateEmail();
-//     if (allInputCorrect(personalDatas, count)) {
-//         nextPageEnable(pageNo++);
-//     }
-// }
-
-// function validateFirstName() {
-//     const firstName = fName.value;
-//     removeFMark();
-//     if (isNull(firstName)) {
-//         showFCrossMark();
-//         firstNameErrorMsg.textContent = 'First Name shouldn\'t be empty';
-//     }
-//     else if (firstName[0] === ' ') {
-//         showFCrossMark();
-//         firstNameErrorMsg.textContent = 'First Name shouldn\'t start with space';
-//     }
-//     else if (!checkAlphabets(firstName)) {
-//         showFCrossMark();
-//         firstNameErrorMsg.textContent = 'First Name should contain alphabets';
-//     }
-//     else {
-//         count += 1;
-//         showFTickMark();
-//         firstNameErrorMsg.textContent = '';
-//     }
-// }
-
-// function validateLastName() {
-//     const lastName = lName.value;
-//     removeLMark();
-//     if (isNull(lastName)) {
-//         showLCrossMark();
-//         lastNameErrorMsg.textContent = 'Last Name shouldn\'t be empty';
-//     }
-//     else if (lastName[0] === ' ') {
-//         showLCrossMark();
-//         lastNameErrorMsg.textContent = 'Last Name shouldn\'t start with space';
-//     }
-//     else if (!checkAlphabets(lastName)) {
-//         showLCrossMark();
-//         lastNameErrorMsg.textContent = 'Last Name should contain alphabets';
-//     }
-//     else {
-//         count += 1;
-//         showLTickMark();
-//         lastNameErrorMsg.textContent = '';
-//     }
-// }
-
-// function validateEmail() {
-//     const emailId = email.value;
-//     removeMailMark();
-//     if (isNull(emailId)) {
-//         showMailCrossMark();
-//         emailErrorMsg.innerText = 'Email is Required';
-//         return false;
-//     }
-//     else if (!emailId.match(/^[a-z0-9.]+@[a-z]+(?:\.[a-z]+)$/)) {
-//         showMailCrossMark();
-//         emailErrorMsg.innerText = 'Please Enter Valid email';
-//         return false;
-//     }
-//     else {
-//         count += 1;
-//         showMailTickMark();
-//         emailErrorMsg.innerText = '';
-//         return true;
-//     }
-// }
-
-// function validatePhoneNumber() {
-//     const number = phone.value;
-//     removePhMark();
-//     if (isNull(number)) {
-//         showPhCrossMark();
-//         phoneNumberErrorMsg.innerHTML = 'Phone Number is Required';
-//     }
-//     else if (!checkPhoneNumber(number)) {
-//         showPhCrossMark();
-//         phoneNumberErrorMsg.innerHTML = 'Please Enter Valid Phone Number';
-//     }
-//     else {
-//         count += 1;
-//         showPhTickMark();
-//         phoneNumberErrorMsg.innerHTML = '';
-//     }
-// }
-
-// function showFCrossMark() {
-//     fnameIcon.innerHTML = '<i style="color: red"; class="fa-solid fa-xmark"></i>';
-// }
-
-// function showLCrossMark() {
-//     lnameIcon.innerHTML = '<i style="color: red"; class="fa-solid fa-xmark"></i>';
-// }
-
-// function showPhCrossMark() {
-//     phoneNumberIcon.innerHTML = '<i style="color: red"; class="fa-solid fa-xmark"></i>';
-// }
-
-// function showMailCrossMark() {
-//     emailIcon.innerHTML = '<i style="color: red"; class="fa-solid fa-xmark"></i>';
-// }
-
-// function showFTickMark() {
-//     fnameIcon.innerHTML = '<i style="font-size:20px; color: green;" class="fa">&#x2713;</i>';
-// }
-
-// function showLTickMark() {
-//     lnameIcon.innerHTML = '<i style="font-size:20px; color: green;" class="fa">&#x2714;</i>';
-// }
-
-// function showPhTickMark() {
-//     phoneNumberIcon.innerHTML = '<i style="font-size:20px; color: green;" class="fa">&#x2713;</i>';
-// }
-
-// function showMailTickMark() {
-//     emailIcon.innerHTML = '<i style="font-size:20px; color: green;" class="fa">&#x2713;</i>';
-// }
-
-// function removeFMark() {
-//     fnameIcon.innerHTML = '';
-// }
-
-// function removeLMark() {
-//     lnameIcon.innerHTML = '';
-// }
-
-// function removePhMark() {
-//     phoneNumberIcon.innerHTML = '';
-// }
-
-// function removeMailMark() {
-//     emailIcon.innerHTML = '';
-// }
-
-// function checkAlphabets(name) {
-//     return (/^[A-Za-z]*$/.test(name));
-// }
-
-// function checkPhoneNumber(number) {
-//     return number.match(/^\d{10}$/);
-// }
-
-// function isNull(name) {
-//     return (name.length ? false : true);
-// }
-
-// function allInputCorrect(datas, count) {
-//     if (count === datas.length) {
-//         return true;
-//     }
-//     else return false;
-// }
-
-// // ----------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-// const clgName = document.getElementById('college-name');
-// const clgLocation = document.getElementById('college-location');
-// const course = document.getElementById('field-of-study');
-
-// const collegeNameError = document.getElementById('college-name-error');
-// const collegeLocationError = document.getElementById('college-location-error');
-// const collegeCourseError = document.getElementById('fos-error');
-
-// const collegeNameIcon = document.getElementById('college-name-icon');
-// const collegeLocationIcon = document.getElementById('college-location-icon');
-// const collegeCourseIcon = document.getElementById('fos-icon');
-
-// let educationDatas = document.getElementsByClassName('education-info');
-
-// function educationDetailsValidation() {
-//     count = 0;
-//     validateCollegeName();
-//     validateCollegeLocation();
-//     validateCollegeCourse();
-//     if (allInputCorrect(educationDatas, count)) {
-//         nextPageEnable(pageNo++);
-//     }
-// }
-
-
-// function validateCollegeName() {
-//     const collegeName = clgName.value;
-//     if (collegeName.length === 0) {
-//         showCollegeNameCrossMark();
-//         collegeNameError.textContent = 'College name is required';
-//     }
-//     else if (!checkAlphabets(collegeName)) {
-//         showCollegeNameCrossMark();
-//         collegeNameError.textContent = 'College name should be of alphabets';
-//     }
-//     else {
-//         count += 1;
-//         showCollegeNameTickMark();
-//         collegeNameError.textContent = '';
-//     }
-// }
-
-// function validateCollegeLocation() {
-//     const collegeLocation = clgLocation.value;
-//     if (collegeLocation.length === 0) {
-//         showCollegeLocationCrossMark();
-//         collegeLocationError.textContent = 'College location is required';
-//     }
-//     else if (!checkAlphabets(collegeLocation)) {
-//         showCollegeLocationCrossMark();
-//         collegeLocationError.textContent = 'College location should be of alphabets';
-//     }
-//     else {
-//         count += 1;
-//         showCollegeLocationTickMark();
-//         collegeLocationError.textContent = '';
-//     }
-// }
-
-// function validateCollegeCourse() {
-//     const collegeCourse = course.value;
-
-//     if (collegeCourse.length === 0) {
-//         showCollegeCourseCrossMark();
-//         collegeCourseError.textContent = 'College course is required';
-//     }
-//     else if (!checkAlphabets(collegeCourse)) {
-//         showCollegeLocationCrossMark();
-//         collegeCourseError.textContent = 'College course should be of alphabets';
-//     }
-//     else {
-//         count += 1;
-//         showCollegeCourseTickMark();
-//         collegeCourseError.textContent = '';
-//     }
-
-// }
-
-// function showCollegeNameTickMark() {
-//     collegeNameIcon.innerHTML = '<i style="font-size:20px; color: green;" class="fa">&#x2713;</i>';
-// }
-
-// function showCollegeLocationTickMark() {
-//     collegeLocationIcon.innerHTML = '<i style="font-size:20px; color: green;" class="fa">&#x2713;</i>';
-// }
-
-// function showCollegeCourseTickMark() {
-//     collegeCourseIcon.innerHTML = '<i style="font-size:20px; color: green;" class="fa">&#x2713;</i>';
-// }
-
-// function showCollegeNameCrossMark() {
-//     collegeNameIcon.innerHTML = '<i style="color: red"; class="fa-solid fa-xmark"></i>';
-// }
-
-// function showCollegeLocationCrossMark() {
-//     collegeLocationIcon.innerHTML = '<i style="color: red"; class="fa-solid fa-xmark"></i>';
-// }
-
-// function showCollegeCourseCrossMark() {
-//     collegeCourseIcon.innerHTML = '<i style="color: red"; class="fa-solid fa-xmark"></i>';
-// }
-
-// function removeCollegeNameMark() {
-//     collegeNameIcon.innerHTML = '';
-// }
-
-// function removeCollegeLocationMark() {
-//     collegeLocationIcon.innerHTML = '';
-// }
-
-// function removeCollegeCourseMark() {
-//     collegeCourseIcon.innerHTML = '';
-// }
-
-// // ----------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-// const companyName = document.getElementById('company-name');
-// const designation = document.getElementById('designation');
-
-// const companyNameError = document.getElementById('company-name-error');
-// const designationError = document.getElementById('designation-error');
-
-// const companyNameIcon = document.getElementById('company-name-icon');
-// const designationIcon = document.getElementById('designation-icon');
-
-// let experienceDatas = document.getElementsByClassName('experience-info');
-
-// function experienceValidation() {
-//     count = 0;
-//     validateCompanyName();
-//     validateDesignation();
-//     if (allInputCorrect(experienceDatas, count)) {
-//         nextPageEnable(pageNo++);
-//     }
-// }
-
-// function validateCompanyName() {
-//     const name = companyName.value;
-//     if (isNull(name)) {
-//         showCompanyNameCrossMark();
-//         companyNameError.textContent = 'Name is required';
-//     }
-//     else if (!checkAlphabets(name)) {
-//         showCompanyNameCrossMark();
-//         companyNameError.textContent = 'Name shouldn\'t contain numbers';
-//     }
-//     else {
-//         count += 1;
-//         showCompanyNameTickMark();
-//         companyNameError.textContent = '';
-//     }
-// }
-
-// function validateDesignation() {
-//     const role = designation.value;
-//     removeDesignationMark();
-//     if (isNull(role)) {
-//         showDesignationCrossMark();
-//         designationError.textContent = 'Designation is required';
-//     }
-//     else if (!checkAlphabets(role)) {
-//         showDesignationCrossMark();
-//         designationError.textContent = 'Designation shouldn\'t contain numbers';
-//     }
-//     else {
-//         count += 1;
-//         showDesignationTickMark();
-//         designationError.innerHTML = '';
-//     }
-// }
-
-// function showCompanyNameTickMark() {
-//     companyNameIcon.innerHTML = '<i style="font-size:20px; color: green;" class="fa">&#x2713;</i>';
-// }
-
-// function showDesignationTickMark() {
-//     designationIcon.innerHTML = '<i style="font-size:20px; color: green;" class="fa">&#x2713;</i>';
-// }
-
-// function showCompanyNameCrossMark() {
-//     companyNameIcon.innerHTML = '<i style="color: red"; class="fa-solid fa-xmark"></i>';
-// }
-
-// function showDesignationCrossMark() {
-//     designationIcon.innerHTML = '<i style="color: red"; class="fa-solid fa-xmark"></i>';
-// }
-
-// function removeCompanyNameMark() {
-//     companyNameIcon.innerHTML = '';
-// }
-
-// function removeDesignationMark() {
-//     designationIcon.innerHTML = '';
-// }
-
-// // ----------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-// const skillName = document.getElementById('skills-name');
-
-// const skillNameError = document.getElementById('skills-error');
-
-// const skillNameIcon = document.getElementById('skills-icon');
-
-// let skillDatas = document.getElementsByClassName('skills-info');
-
-// function skillsValidation() {
-//     console.log(skillDatas);
-//     count = 0;
-//     validateSkillName();
-//     if (allInputCorrect(skillDatas, count)) {
-//         nextPageEnable(pageNo++);
-//     }
-// }
-
-// function validateSkillName() {
-//     removeSkillNameMark();
-
-//     const name = skillName.value;
-
-//     if (isNull(name)) {
-//         showSkillNameCrossMark();
-//         skillNameError.textContent = 'Skill name shouldn\'t be empty';
-//     }
-//     else {
-//         count += 1;
-//         showSkillNameTickMark();
-//         skillNameError.textContent = '';
-//     }
-// }
-
-// function showSkillNameCrossMark() {
-//     console.log('arulmozhi');
-//     skillNameIcon.innerHTML = '<i style="color: red"; class="fa-solid fa-xmark"></i>';
-// }
-
-// function showSkillNameTickMark() {
-//     skillNameIcon.innerHTML = '<i style="font-size:20px; color: green;" class="fa">&#x2713;</i>';
-// }
-
-// function removeSkillNameMark() {
-//     skillNameIcon.innerHTML = '';
-// }
