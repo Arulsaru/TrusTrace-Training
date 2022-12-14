@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>HTML Table Practice</title>
+    <style>
+        body {
+            background-color: blanchedalmond;
+        }
+        table, th, td {
+          border: 1px solid;
+          border-collapse: collapse;
+          border-style: groove;
+        }
+        th {
+            background-color: bisque;
+        }
+        td {
+            text-align: left;
+            padding-left: 20px;
+        }
+        tr {
+            height: 50px !important;
+        }
+        tr:hover {
+            background-color: grey;
+        }
+    </style>
+</head>
+<center>
+<body>
+    <h1>College Database</h1>
+    <table>
+        <!-- <colgroup>
+            <col span="2" style="background-color: bisque;"
+        </colgroup> -->
+        <tr>
+            <th style="width:110px" rowspan="2">S No</th>
+            <th style="width:200px" colspan="2">Student Name</th>
+            <th style="width:130px" rowspan="2">Roll Number</th>
+            <th style="width:130px" rowspan="2">Date of Birth</th>
+        </tr>
+        <tr>
+            <td style="width:130px" bgcolor="bisque" ><b>First Name</b></td>
+            <td style="width:130px" bgcolor="bisque" ><b>Last Name</b></td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Preethi</td>
+            <td>Arulmozhi</td>
+            <td>191EC112</td>
+            <td>April 15</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Karunagaran</td>
+            <td>Duraiswamy</td>
+            <td>191EC112</td>
+            <td>April 15</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Sumathi</td>
+            <td>Karunagaran</td>
+            <td>191EC112</td>
+            <td>April 15</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Dhivya</td>
+            <td>RM</td>
+            <td>191EC112</td>
+            <td>April 15</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Swetha</td>
+            <td>Krishnan</td>
+            <td>191EC112</td>
+            <td>April 15</td>
+        </tr>
+    </table>
+</body>
+</center>
+</html>
