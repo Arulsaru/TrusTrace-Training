@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML Practice</title>
+</head>
+<body>
+    <center>
+        <h2 style="margin-bottom: 100px !important;">USER REGISTRATION</h2>
+        <!-- idhuku padhila field set kudukalam -->
+        <form style="background-color:rgb(255, 255, 255); display: inline-block; "
+            oninput "op.value=parseInt(text.value)" action="D:\demo.html">
+
+            <div style="text-align:left;">
+                <label for="Name">Name</label> &emsp;
+                <input type="text"> <br> <br>
+                <label for="Roll number">Roll Number</label> &emsp; <!-- emphasized space -->
+                <input type="text" pattern="[A-Z0-9]" /> 
+                <br><br>
+                <label for="Department">Department</label>
+                <input type="radio" <label for="ECE" name="branch">ECE</label>
+                <input type="radio" <label for="CSE" name="branch">CSE</label>
+                <input type="radio" <label for="IT" name="branch">IT</label> <br><br>
+                <label for="Languages known"> Languages known </label>
+                <input type="checkbox" <label for="Tamil" name="Languages"> Tamil </label>
+                <input type="checkbox" <label for="English" name="Languages"> English </label>
+                <input type="checkbox" <label for="Hindi" name="Languages"> Hindi </label> <br><br>
+                <label for="Age"> Age ( 20 - 50 ) </label>
+                <input type="range" id="range_id">
+                <output name="op" for="range_id"> </output> <br><br>
+                <label for="Email"> Mail id </label> &emsp;
+                <input type="email"> <br><br>
+                <label for="dob"> Date Of Birth </label> &emsp;
+                <input type="date">
+                <br><br>
+                <label for="country"> Country </label> &emsp;
+                <input list="country" type="text" value=" ">
+                <datalist id="country"> <!-- we can also use option tag also -->
+                    <option value="INDIA">
+                    <option value="USA">
+                </datalist> <br><br>
+                <label for="gender"> Gender </label> &emsp;
+                <select id="gender">
+                    <option value="m">Male</option>
+                    <option value="f">Female</option>
+                    <option value="na">Rather Not To Say</option>
+                </select> <br> <br>
+            </div>
+            <input type="submit" value="Submit - button disabled" disabled>
+        </form>
+    </center>
+</body>
+
+</html>
