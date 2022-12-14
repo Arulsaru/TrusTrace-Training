@@ -1,0 +1,35 @@
+/* input[type=radio],
+input[type=submit],
+input[type=text],
+input[type=reset],
+input[type=cancel] {
+    padding: 10px 10px;
+    margin-left: 20px;
+} */
+
+
+.cursorSelector {
+    cursor: not-allowed;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: rgb(251, 28, 28);
+    color: #fff;
+    text-align: center;
+    /* padding: 0px 0; */
+    border-radius: 1px;
+
+    /* Position the tooltip text - see examples below! */
+    position:absolute;
+}
+  
+  /* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+    visibility:visible;
+}
+
+.cursorSelector {
+    cursor:not-allowed;
+}
