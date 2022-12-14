@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Random Name Generator</title>
+</head>
+<body>
+    <script>
+        const names = ['Arulmozhi', 'Preethi', 'Keerthy', 'Gowtham', 'Prasath', 'Kavimathi', 'Hari'];
+        const bodyElement = document.getElementsByTagName('body')[0];
+        const heading = document.createElement('h2');
+        bodyElement.appendChild(heading); 
+        bodyElement.innerHTML = 'Click here for random names : ';
+        const h3Tag = document.createElement('h3');
+        const inputTag = document.createElement('input'); 
+        inputTag.type = 'submit';
+        bodyElement.appendChild(inputTag);
+        bodyElement.appendChild(h3Tag);
+        inputTag.onclick = functionCall;
+
+        function functionCall() { 
+            let name = randomNumberGenerator();
+            h3Tag.innerHTML = name;
+        } 
+
+        function randomNumberGenerator(){
+            let idx;
+            
+            do{
+                idx = Math.floor(Math.random() * 10);
+            } while(idx >= names.length); 
+
+            return names[idx];
+        }
+
+    </script>
+</body>
+</html>
