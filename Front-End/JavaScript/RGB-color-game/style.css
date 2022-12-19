@@ -1,0 +1,11 @@
+body {
+	background-color: rgb(24, 29, 49);
+	margin: 0;
+    text-align: center;
+}
+
+#title {
+    color: rgb(240, 233, 210);
+    margin: 30px 10px 10px 10px;
+}
+
