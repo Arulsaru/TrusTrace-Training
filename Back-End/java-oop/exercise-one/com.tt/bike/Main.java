@@ -8,9 +8,16 @@ public class Main {
         System.out.println("The engine capacity of the bike is " + bikeOne.getEngineCapacity());
         System.out.println("Number of Gears " + bikeOne.getNumberOfGears());
         System.out.println("Type of Brake " + bikeOne.getTypeOfBrake());
-
         bikeOne.increaseSpeed();
         bikeOne.decreaseSpeed();
-        bikeOne.currentGear();
+        bikeOne.getCurrentGear();
+        SuperBike superBikeOne = new SuperBike(6, 800, "disc");
+        System.out.println(superBikeOne.getCurrentGear());
+        superBikeOne.increaseSpeed();
+        System.out.println(superBikeOne.getCurrentGear());
+        superBikeOne.increaseSpeed();
+        superBikeOne.increaseSpeed();
+        System.out.println(superBikeOne.getSpeed());
+        System.out.println(superBikeOne.getCurrentGear());
     }
 }

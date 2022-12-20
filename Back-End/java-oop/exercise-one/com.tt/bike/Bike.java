@@ -7,6 +7,8 @@ public class Bike {
     private String typeOfBrake;
     private int currentGear;
     private int currentSpeed;
+    static int tempSpeed = 0;
+    static int tempGear = 0;
     private final int MAX_SPEED = 50;
     public Bike() {
         isOn = false;
@@ -38,8 +40,9 @@ public class Bike {
         if (currentSpeed == MAX_SPEED) {
             System.out.println("Reached Maximum limit");
         } else {
-            this.currentSpeed += 10;
-            this.currentGear += 1;
+            tempSpeed += 10;
+            tempGear += 1;
+            setSpeed(tempSpeed);
         }
 //      currentSpeed == MAX_SPEED ? System.out.println("Reached Maximum limit") : this.currentSpeed = this.currentSpeed += 10;
     }
@@ -52,20 +55,31 @@ public class Bike {
             System.out.println("Speed is already zero");
         }
         else {
-            this.currentSpeed -= 10;
-            this.currentGear -= 1;
+            tempSpeed -= 10;
+            tempGear -= 1;
+            setSpeed(tempSpeed);
+            setGear(tempGear);
         }
     }
-    public int currentGear() {
+    public void setGear(int tempGear) {
+        this.currentGear = tempGear;
+    }
+    public int getCurrentGear() {
         return this.currentGear;
     }
-    private boolean checkBikeStatus() {
+    public boolean checkBikeStatus() {
         if(isOn == true) {
             return true;
         }
         return false;
     }
-    private void printStartMessage() {
+    public void setSpeed(int tempSpeed) {
+        this.currentSpeed = tempSpeed;
+    }
+    public int getSpeed() {
+        return this.currentSpeed;
+    }
+    public void printStartMessage() {
         System.out.println("Start your engine please..");
     }
 
