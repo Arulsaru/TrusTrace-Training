@@ -7,10 +7,11 @@ public class Bike {
     private String typeOfBrake;
     private int currentGear;
     private int currentSpeed;
-    static int tempSpeed = 0;
-    static int tempGear = 0;
+    public int tempSpeed = 0;
+    public int tempGear = 0;
     private final int MAX_SPEED = 50;
     public Bike() {
+        System.out.println("Bike class constructor");
         isOn = false;
     }
     public void startBike() {
@@ -24,6 +25,7 @@ public class Bike {
     public int getEngineCapacity() {
         return engineCapacity;
     }
+
     public int getNumberOfGears() {
         return numberOfGears;
     }
@@ -37,9 +39,7 @@ public class Bike {
         }
 //        checkBikeStatus() == true ? printStartMessage() : "";
 
-        if (currentSpeed == MAX_SPEED) {
-            System.out.println("Reached Maximum limit");
-        } else {
+        if(checkSpeed()) {
             tempSpeed += 10;
             tempGear += 1;
             setSpeed(tempSpeed);
@@ -69,9 +69,9 @@ public class Bike {
     }
     public boolean checkBikeStatus() {
         if(isOn == true) {
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
     public void setSpeed(int tempSpeed) {
         this.currentSpeed = tempSpeed;
@@ -82,5 +82,15 @@ public class Bike {
     public void printStartMessage() {
         System.out.println("Start your engine please..");
     }
+    public boolean checkSpeed() {
+        if (currentSpeed == MAX_SPEED) {
+            System.out.println("Reached Maximum limit");
+            return false;
+        }
+        return true;
+    }
+    public void preferableAt() {
+        System.out.println("Preferable for speed as well as comfort..");
 
+    }
 }
