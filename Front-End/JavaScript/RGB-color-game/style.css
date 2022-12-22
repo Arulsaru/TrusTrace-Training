@@ -1,11 +1,47 @@
 body {
-	background-color: rgb(24, 29, 49);
-	margin: 0;
-    text-align: center;
+	/* background-color: rgb(0, 29, 110); */
+	text-align: center !important;
+	user-select: none;
 }
 
 #title {
-    color: rgb(240, 233, 210);
+    color: rgb(0, 29, 110);
     margin: 30px 10px 10px 10px;
+	font-size: 30px;
+	font-weight: bolder;
+}
+
+#color-code {
+	display: block;
+	margin-top: 40px;
+	text-transform: capitalize !important;
+}
+
+#container {
+	max-width: 500px;
+	margin-top: 80px !important;
+	padding-left: 50px;
+}
+
+.square {
+	background-color: purple;
+	border-radius: 500px;
+	/* display: block; */
+	height: 120px;
+	width: 120px;
+	float: left;
+	margin: 15px;
+	cursor: pointer;
+}
+
+#new-game-button {
+	margin-left: 30px;
+	margin-top: 20px;
+}
+
+#message {
+	margin-top: 80px;
+	margin-right: -20px !important;
+	font-size: 20px;
 }
 
