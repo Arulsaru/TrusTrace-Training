@@ -6,10 +6,23 @@ public class Divison extends Calculator {
         this.numberOne = numberOne;
         this.numberTwo = numberTwo;
     }
+    @Override
+    public void checkExceptionOnNumbers() {
+        try {
+            doOperation();
+            System.out.println(numberOne + " " + numberTwo);
+        } catch(ArithmeticException e) {
+            System.out.println("Divison by zero");
+            super.setOption(4); // 4 is for division
+            super.setOperation();
+            super.getNumbers();
+        }
+        printAnswer();
+    }
     public void doOperation() {
         result = numberOne / numberTwo;
     }
     public void printAnswer() {
-        System.out.println("The expression " + numberOne + " × " + numberTwo + " gives " + result);
+        System.out.println("The expression " + numberOne + " / " + numberTwo + " gives " + result);
     }
 }

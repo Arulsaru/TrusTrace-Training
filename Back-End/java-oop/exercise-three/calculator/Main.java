@@ -4,8 +4,9 @@ public class Main {
         cobj.printWelcomeMessage();
         cobj.showOptions();
         cobj.getOption();
-        cobj.setOperation();
+//        cobj.setOperation();
         cobj.getNumbers();
-        cobj.callRespectiveObject();
+//        cobj.checkExceptionInOption();
+//        cobj.callRespectiveObject();
     }
 }
