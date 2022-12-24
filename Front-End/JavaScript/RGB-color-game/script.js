@@ -1,15 +1,20 @@
 const squares = document.querySelectorAll('.square');
 const newGame = document.getElementById('new-game-button');
 const colorCode = document.getElementById('color-code');
+const message = document.getElementById('message');
 let selectedSquareIndex;
 let red;
 let green;
 let blue;
 let correctIndex;
-let flag = 0;
+let verifyNewGame = 0;
+let verifyWrongIcon = 0;
 
 newGame.addEventListener('click', () => {
-    flag = 1;
+    verifyNewGame = 1;
+    message.innerText = '';
+    removeWrongIcons()
+    // square.innerHTML = '';
     setRandomColors();
 })
 
@@ -23,17 +28,32 @@ squares.forEach((square, index) => {
             }
             else {
                 square.style = 'pointer-event: none';
+                showWrongIcon(square);
                 square.style = 'cursor: not-allowed';
+                message.innerText = 'Wrong selection try another';
+                verifyWrongIcon = 1;
             }
-        }
+
+        } 
         else {
-            colorCode.innerText = 'Confirm new game first';   
+            colorCode.innerText = 'Click on new game to start the game..';   
         }
     })
 })
 
 function checkNewGameOrNot() {
-    return flag;
+    return verifyNewGame;
+}
+
+function removeWrongIcons() {
+    squares.forEach((square) => {
+        square.innerHTML = '';
+        square.style = 'cursor: pointer';
+    })
+}
+
+function showWrongIcon(square) {
+    square.innerHTML = '<i id="wrong-icon" class="fa-solid fa-circle-xmark"></i>';
 }
 
 function setRandomColors() {
@@ -46,9 +66,9 @@ function setRandomColors() {
 
         if(index === correctIndex) {
             displayMainColorCode();
+            console.log(red + " " + green + " " + blue)
         }
     })
-    console.log(red + " " + green + " " + blue)
 }
 
 function displayMainColorCode() {
