@@ -2,12 +2,12 @@ body {
 	/* background-color: rgb(0, 29, 110); */
 	text-align: center !important;
 	user-select: none;
-	background-color: black !important;
-	color: white !important;
+	/* background-color: white !important; */
+	/* color: black !important; */
 }
 
 #title {
-    color: rgb(0, 29, 110);
+    /* color: rgb(0, 29, 110); */
     margin: 30px 10px 10px 10px;
 	font-size: 30px;
 	font-weight: bolder;
@@ -48,7 +48,11 @@ body {
 
 #message {
 	margin-top: 80px;
-	margin-right: -20px !important;
+	margin-left: 530px !important;
 	/* font-size: 20px; */
 }
 
+.dark-mode-switch {
+	margin-top: 40px;
+	margin-left: 530px !important;
+}

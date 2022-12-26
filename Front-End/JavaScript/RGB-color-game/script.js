@@ -2,13 +2,31 @@ const squares = document.querySelectorAll('.square');
 const newGame = document.getElementById('new-game-button');
 const colorCode = document.getElementById('color-code');
 const message = document.getElementById('message');
+const body = document.getElementById('body');
+const darkModeButton = document.getElementById('customSwitch1');
 let selectedSquareIndex;
 let red;
 let green;
 let blue;
 let correctIndex;
 let verifyNewGame = 0;
+let isDark = 0;
 let verifyWrongIcon = 0;
+
+darkModeButton.addEventListener('change', function() {
+
+    if(isDark) {
+        body.style = 'background-color: white';
+        body.style.color = 'black';
+        // body.style = 'color: black !important';
+        isDark = 0;
+    }
+    else {
+        body.style = 'background-color: black';
+        body.style.color = 'white';
+        isDark = 1;
+    }
+})
 
 newGame.addEventListener('click', () => {
     verifyNewGame = 1;
