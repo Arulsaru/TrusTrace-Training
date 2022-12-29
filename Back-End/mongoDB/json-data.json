@@ -1,0 +1,119 @@
+{
+    "name" : "Arulmozhi Karunagaran",
+    "phoneNumber" : 1234567101,
+    "gender" : "Male",
+    "languagesKnown" : [
+        "Tamil",
+        "English",
+        "Hindi"
+    ],
+    "collegeName" : "Bannari Amman Institute Of Technology",
+    "schoolName" : "Kamalam International School",
+    "projects" : [
+        {
+            "company" : "TrusTrace",
+            "projectDomain" : "Machine Learning"
+        }
+    ],
+    "age" : 10
+},
+{
+    "name" : "Preethi Arulmozhi",
+    "phoneNumber" : 1234567102,
+    "gender" : "Female",
+    "languagesKnown" : [
+        "Tamil",
+        "English"
+    ],
+    "collegeName" : "Bannari Amman Institute Of Technology",
+    "schoolName" : "Kamalam International School",
+    "projects" : [
+        {
+            "company" : "TrusTrace",
+            "projectDomain" : "Full Stack Development"
+        },
+        {
+            "company" : "Informatica",
+            "projectDomain" : "Technical Support"
+        }
+    ],
+    "age" : 15
+},
+{
+    "name" : "Keerthick Subramaniyam",
+    "phoneNumber" : 1234567103,
+    "gender" : "Male",
+    "languagesKnown" : [
+        "Tamil",
+        "English"
+    ],
+    "collegeName" : "Sri Sakthi Institute Of Technology",
+    "schoolName" : "Senthil Public School",
+    "projects" : [
+        {
+            "company" : "Zoho",
+            "projectDomain" : "Back End"
+        },
+        {
+            "company" : "Rently",
+            "projectDomain" : "Front End"
+        }
+    ],
+    "age" : 17
+},
+{
+    "name" : "Gowtham  Baluswamy",
+    "phoneNumber" : 1234567104,
+    "gender" : "Male",
+    "languagesKnown" : [
+        "Tamil",
+        "English"
+    ],
+    "collegeName" : "Sri Sakthi Institute Of Technology",
+    "schoolName" : "Senthil Public School",
+    "projects" : [
+        {
+            "company" : "Zoho",
+            "projectDomain" : "Front End"
+        }
+    ],
+    "age" : 18
+},
+{
+    "name" : "Hari Haran",
+    "phoneNumber" : 1234567105,
+    "gender" : "Male",
+    "languagesKnown" : [
+        "Tamil",
+        "English",
+        "Hindi"
+    ],
+    "collegeName" : "Coimbatore Insititue Of Technology",
+    "schoolName" : "Vijay Boys Public School",
+    "projects" : [
+        {
+            "company" : "TrusTrace",
+            "projectDomain" : "Machine Learning"
+        }
+    ],
+    "age" : 19
+},
+{
+    "name" : "Swetha Krishnan",
+    "phoneNumber" : 1234567106,
+    "gender" : "Female",
+    "languagesKnown" : [
+        "Tamil",
+        "English",
+        "Hindi"
+    ],
+    "collegeName" : "Bannari Amman Institute Of Technology",
+    "schoolName" : "Vijay Girls Public School",
+    "projects" : [
+        {
+            "company" : "TrusTrace",
+            "projectDomain" : "Machine Learning"
+        }
+    ],
+    "age" : 24,
+}
