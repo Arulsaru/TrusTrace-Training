@@ -1,0 +1,15 @@
+.user-id-div {
+    width: 400px;
+    align-items: center;
+    position: relative;
+    top: 210px;
+    left: 500px;
+    right: 300px;
+    padding-left: 30px;
+}
+
+.create-button {
+    position: relative;
+    margin-top: 250px;
+    margin-left: 580px;
+}

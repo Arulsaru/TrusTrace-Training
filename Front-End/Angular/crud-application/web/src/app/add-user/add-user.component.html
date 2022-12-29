@@ -1,0 +1,26 @@
+<form linear>
+    <div class="main-div">
+        <div class="first-name-div">
+            <mat-form-field>
+                <mat-label>Enter your First Name</mat-label>
+                <input matInput [formControl]="firstName" required>
+                <mat-error *ngIf="firstName.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="last-name-div">
+            <mat-form-field>
+                <mat-label>Enter your Last Name</mat-label>
+                <input matInput [formControl]="lastName" required>
+                <mat-error *ngIf="lastName.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="phone-number-div">
+            <mat-form-field>
+                <mat-label>Enter your Phone Number</mat-label>
+                <input matInput [formControl]="phoneNumber" required>
+                <mat-error *ngIf="phoneNumber.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+        </div>
+        <button mat-raised-button color="primary" (click)="createUser()" class="create-button">CREATE</button>
+    </div>
+</form>

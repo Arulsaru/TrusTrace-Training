@@ -1,0 +1,12 @@
+<div class="user-id-div">
+    <mat-form-field>
+        <mat-label>Enter your Id</mat-label>
+        <input type="number" matInput [formControl]="userId" required>
+        <mat-error *ngIf="userId.invalid">Enter the correct user Id</mat-error>
+    </mat-form-field>
+</div>
+<button mat-raised-button color="primary" (click)="getOne()" class="create-button">CREATE</button>
+
+<!-- <div>
+    <p></p>
+</div> -->

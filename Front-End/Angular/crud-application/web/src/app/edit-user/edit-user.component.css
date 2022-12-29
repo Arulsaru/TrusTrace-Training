@@ -1,0 +1,22 @@
+.main-div {
+    /* border: 2px solid black; */
+    width: 400px;
+    align-items: center;
+    position: relative;
+    top: 120px;
+    left: 460px;
+    right: 300px;
+    padding-left: 30px;
+}
+
+mat-form-field {
+    margin-top: 15px;
+    font-weight: 400 !important;
+    line-height: 2 !important;
+    width: 230px !important;
+}
+
+.edit-button {
+    margin-top: 30px;
+    margin-left: 90px;
+}

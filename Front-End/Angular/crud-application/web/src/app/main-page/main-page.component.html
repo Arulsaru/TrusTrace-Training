@@ -1,0 +1,37 @@
+<p class="title">STUDENT DETAILS</p>
+<button class="btn btn-secondary add-user-div" routerLink="create">Add User</button> 
+<div class="center">
+    <div>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">USER ID</th>
+                    <th scope="col">FIRST NAME</th>
+                    <th scope="col">LAST NAME</th>
+                    <th scope="col">PHONE NUMBER</th>
+                    <th scope="col">EDIT</th>
+                    <th scope="col">DELETE</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of datas | paginate: { itemsPerPage: count, currentPage: page }">
+                    <td scope="row" id="user-id">{{user.user_id}}</td>
+                    <td>{{user.first_name}}</td>
+                    <td>{{user.last_name}}</td>
+                    <td>{{user.phone_number}}</td>
+                    <td><button id="edit-user" mat-raised-button color="primary" class="edit-user-button" (click)="navigateEditUser(user.user_id)">EDIT</button></td>
+                    <td><button id="delete-user" mat-raised-button color="warn"  class="edit-user-button" (click)="deleteUser(user.user_id, user.first_name, user.last_name, user.phone_number)">DELETE</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="pagination">
+        <pagination-controls (pageChange)="page=$event"></pagination-controls> 
+        <!-- <form>
+            <mat-form-field>
+                <mat-label>Items per page</mat-label>
+                <input matInput name="count" [formControl]="itemsPerPage" required>
+            </mat-form-field>
+        </form> -->
+    </div> 
+</div>
