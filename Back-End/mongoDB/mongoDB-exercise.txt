@@ -12,6 +12,14 @@
 	Query -- db.inspections.aggregate([{$match: { "$or":[{result: "Pass"}, {result: "Re-inspection"}]}, {$count: "Passed students count: "} ])
 
 5. Find total count of sales done in month of augest in 2014 by senior citizens in sample_supplies database
+	Query -- db.sales.find({
+			 $and: [
+				{saleDate:{$gt: ISODate("2014-08-01")}},
+				{saleDate:{$lt: ISODate("2014-08-31")}},
+				{"customer.age":{$gt:60}}
+			 ]
+	      	})
+
 6. List all sales purchase method and coupon used alone with sorted by store location in decending order in sample_supplies database
 
 7. Find average imdb rating for movies released in year 1999 using aggregate from sample_mflix database
