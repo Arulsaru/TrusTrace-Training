@@ -1,7 +1,7 @@
 package com.bit.teachers;
 import java.util.*;
 
-public class Organisation {
+public class Organisation implements methods {
     Scanner sc = new Scanner(System.in);
     Stack <String> teachersStk = new Stack<>();
     Iterator stackIterator = teachersStk.iterator();
@@ -28,5 +28,10 @@ public class Organisation {
     void searchATeacher() {
         int idx = teachersStk.search("ads");
         System.out.println(teachersStk.indexOf(idx));
+    }
+
+    @Override
+    public void printEmptyMessage(String location) {
+        System.out.println(location + " is empty");
     }
 }
