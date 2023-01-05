@@ -3,7 +3,7 @@ package com.bit.teachers;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-public class queueImpl implements methods {
+public class QueueImpl implements methods {
     Queue<String> teachersQueue = new PriorityQueue<>();
     boolean isQueueEmpty() {
         return teachersQueue.isEmpty();
