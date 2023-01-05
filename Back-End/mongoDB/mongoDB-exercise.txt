@@ -21,6 +21,7 @@
 	      	})
 
 6. List all sales purchase method and coupon used alone with sorted by store location in decending order in sample_supplies database
+	Query -- db.sales.find({}, { _id: false, purchaseMethod: 1, couponUsed: 1, storeLocation: 1}).sort({storeLocation: -1});
 
 7. Find average imdb rating for movies released in year 1999 using aggregate from sample_mflix database
                    Query --    db.movies.aggregate([
