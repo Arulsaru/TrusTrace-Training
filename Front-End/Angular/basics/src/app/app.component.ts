@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, Input } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -14,13 +14,22 @@ export class AppComponent {
   colorStyleText: string = 'green-color';
   color: string = 'aqua';
   showText: string = '';
+  twoWayBindingText: string = '';
 
   onclick(): void {
     this.showText = 'Clicked button';
   }
 
+  onClick(event: MouseEvent): void {
+    this.showText = `${event.type} event has occured`;
+  }
+
   getName(): string {
     return this.name;
+  }
+
+  display(text: any): void { // any ah change pannanu
+    console.log(text.value);
   }
 
 }
