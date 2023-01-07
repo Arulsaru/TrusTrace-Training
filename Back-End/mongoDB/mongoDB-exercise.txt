@@ -9,7 +9,20 @@
 	Query - db.inspections.find({"$and": [{result: "Violation Issued"}, {sector: "Tax Preparers - 891"}]})
 
 4. Find total count inspection passed and re inspection needed companies count using aggregate in sample_training database
-	Query -- db.inspections.aggregate([{$match: { "$or":[{result: "Pass"}, {result: "Re-inspection"}]}, {$count: "Passed students count: "} ])
+	Query -- db.inspections.aggregate([
+		    {
+			$match: {result: 
+			    { $in: ["Pass", "Re-inspection"] }
+			}
+		    },
+		    {
+			$group: {
+			    _id: "$result",
+			    count: { $sum: 1 }
+			}
+		    }
+		])
+
 
 5. Find total count of sales done in month of augest in 2014 by senior citizens in sample_supplies database
 	Query -- db.sales.find({
