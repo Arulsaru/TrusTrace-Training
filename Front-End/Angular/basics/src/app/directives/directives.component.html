@@ -1,0 +1,25 @@
+<p>DIRECTIVES COMPONENT</p>
+<p><li>Structural Directive</li></p>
+<button class="btn btn-success" (click)="changeToClicked()">Click to If block and else block</button>
+<span *ngIf="isClicked; else elseBlock">This text is under ngIf directive condition -- (If Tag)</span>
+<!-- <ng-template #thenBlock>&emsp;Then block</ng-template> -->
+<ng-template #elseBlock>&emsp;Else block since isClicked is false by default</ng-template> 
+    <!--only ng-template or ng-container only accepts structural directives-->
+
+<div>
+    <button class="btn btn-success" (click)="green()">Green color</button>
+    <button class="btn btn-danger" (click)="red()">Red color</button>
+    <button class="btn btn-primary" (click)="blue()">Blue color</button>
+    <span>Achieved using ngSwitch directive</span>
+</div>
+
+<div [ngSwitch]="color">
+    <span class="red-color" *ngSwitchCase="'red'"><b>RED</b> color choosed</span>
+    <span class="green-color" *ngSwitchCase="'green'"><b>GREEN</b> color choosed</span>
+    <span class="blue-color" *ngSwitchCase="'blue'"><b>BLUE</b> color choosed</span>
+</div>
+
+<div *ngFor="let name of names; index as idx; first as isFirstElement; last as isLastElement; odd as isOdd; even as isEven">
+    <p>{{idx + 1}} - {{name}} - {{isFirstElement}} - {{isLastElement}} - {{isOdd}} - {{isEven}}</p>
+</div>
+<p>&emsp;Index - Name - Is first element in the array - Is last element in the array - Is odd index - Is even index</p>
