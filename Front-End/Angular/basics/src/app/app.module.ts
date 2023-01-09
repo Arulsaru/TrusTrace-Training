@@ -7,13 +7,17 @@ import { DirectivesComponent } from './directives/directives.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ParentComponent } from './parent/parent.component';
 import { ChildComponent } from './child/child.component';
+import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
+import { BindingComponent } from './binding/binding.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DirectivesComponent,
     ParentComponent,
-    ChildComponent
+    ChildComponent,
+    ReactiveFormsComponent,
+    BindingComponent
   ],
   imports: [
     BrowserModule,

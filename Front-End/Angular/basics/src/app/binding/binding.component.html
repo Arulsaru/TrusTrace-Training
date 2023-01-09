@@ -1,0 +1,24 @@
+
+<p>{{name}}</p>
+<p>{{"My name is " + name}}</p>
+<p>{{"function call in interpolation " + getName()}}</p>
+<button class="btn btn-primary" id="buttonId" [disabled]="isDisabled">Disabled button using disabled attribute</button> <!-- property binding -->
+<p [class]="colorStyleText">Class binding</p>
+<p [class.green-color]="isDisabled">This is achieved using Class binding... if isDisabled value is true style will apply</p>
+<p [ngClass]="'green-color yellow-color red-color'">Color appears in the order of the colors in css file</p>
+<p [style.color]="'blue'">Style binding</p>
+<p [style.color]="isDisabled ? 'red' : 'green'">If is isDisabled is false then red color or else green color (acheieved using ternary operator)</p>
+<p [style.color]="color">Shows aqua color</p>
+<button class="btn btn-secondary" (click)="onclick()">on click show</button>
+{{showText}}
+<button class="btn btn-secondary" (click)="onClick($event)">event name</button>
+<br>
+<input #inputText type="text">
+<button class="btn btn-primary" (click)="display(inputText)">display on log and below</button>
+<p>This text is acquired by template reference variable -- {{inputText.value}}</p>
+<br>
+<span><b>TWO WAY BINDING</b></span>
+<input [(ngModel)]="twoWayBindingText" type="text">
+<p>The input entered in the input field above will be displayed here -- <b class="red-color">{{twoWayBindingText}}</b></p>
+<br>
+<hr>
