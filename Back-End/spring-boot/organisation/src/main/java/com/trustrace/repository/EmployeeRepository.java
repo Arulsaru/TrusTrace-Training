@@ -1,5 +1,5 @@
 package com.trustrace.repository;
-import com.trustrace.Employee;
+import com.trustrace.pojo.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class EmployeeRepository {
@@ -29,7 +30,8 @@ public class EmployeeRepository {
         Query query = new Query().addCriteria(Criteria.where("employeeId").is(employee.getEmployeeId()));
         Update update = new Update();
         update.set("name", employee.getName());
-        update.set("description", employee.getPhoneNumber());
+        update.set("phoneNumber", employee.getPhoneNumber());
+        update.set("email", employee.getEmail());
         mongoTemplate.findAndModify(query, update, Employee.class);
     }
     public List<Employee> getAllEmployeePaginated(String pageNumber, String pageSize) {
