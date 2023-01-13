@@ -1,4 +1,4 @@
-package com.trustrace.service.validation;
+package com.trustrace.service.employee.validator;
 
 import com.trustrace.pojo.Employee;
 import com.trustrace.repository.EmployeeRepository;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class GetOneServiceValidation {
+public class GetOneServiceValidator {
     @Autowired
     EmployeeRepository employeeRepository;
     public void isIdExist(String id) throws Exception {

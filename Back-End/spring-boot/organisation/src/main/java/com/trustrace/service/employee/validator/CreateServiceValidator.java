@@ -1,4 +1,4 @@
-package com.trustrace.service.validation;
+package com.trustrace.service.employee.validator;
 
 import com.trustrace.pojo.Employee;
 import com.trustrace.repository.EmployeeRepository;
@@ -6,8 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+
 @Service
-public class CreateServiceValidation {
+public class CreateServiceValidator {
     @Autowired
     private EmployeeRepository employeeRepository;
     public void preValidate(Employee employee) throws Exception {
@@ -27,22 +28,18 @@ public class CreateServiceValidation {
         }
     }
     public boolean isIdExist(String employeeId) throws Exception {
-        Optional<Employee> optionalEmployeeObject = employeeRepository.getAllEmployee().stream()
-                                                                                        .filter(employee -> employee.getEmployeeId()
-                                                                                        .equals(employeeId))
-                                                                                        .findFirst();
-        return optionalEmployeeObject.isPresent();
+        Employee optionalEmployeeObject = employeeRepository.getOneEmployee(employeeId);
+        return (optionalEmployeeObject != null);
     }
-
     public boolean isEmailExist(Employee employee) {
-        return employeeRepository.getAllEmployee().stream()
-                .anyMatch(emp -> emp.getEmail()
-                        .equals(employee.getEmail()));
+        return employeeRepository.getOneEmployee(employee.getEmployeeId()) // logic thappu
+                                    .getEmail()
+                                    .equals(employee.getEmail());
     }
     public boolean isPhoneNumberExist(Employee employee) {
-        return employeeRepository.getAllEmployee().stream()
-                .anyMatch(emp -> emp.getPhoneNumber()
-                        .equals(employee.getPhoneNumber()));
+        return employeeRepository.getOneEmployee(employee.getEmployeeId()) //logic thappu
+                                    .getPhoneNumber()
+                                    .equals(employee.getPhoneNumber());
     }
     public boolean hasTenDigits(String number) {
         return (number.length() != 10);

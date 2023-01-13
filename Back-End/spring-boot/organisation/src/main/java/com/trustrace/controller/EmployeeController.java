@@ -1,7 +1,7 @@
 package com.trustrace.controller;
 
 import com.trustrace.pojo.Employee;
-import com.trustrace.service.EmployeeService;
+import com.trustrace.service.employee.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

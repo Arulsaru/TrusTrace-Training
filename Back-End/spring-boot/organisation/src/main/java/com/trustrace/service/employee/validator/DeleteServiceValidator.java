@@ -1,12 +1,12 @@
-package com.trustrace.service.validation;
+package com.trustrace.service.employee.validator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class DeleteServiceValidation {
+public class DeleteServiceValidator {
     @Autowired
-    GetOneServiceValidation getOneServiceValidation;
+    GetOneServiceValidator getOneServiceValidation;
     public void preValidate(String employeeId) throws Exception {
         getOneServiceValidation.isIdExist(employeeId);
     }

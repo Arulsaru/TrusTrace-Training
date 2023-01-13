@@ -7,13 +7,26 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public class EmployeeRepository {
     @Autowired
     private MongoTemplate mongoTemplate;
+    public List<String> roles = new ArrayList<>();
+    public List<String> designations = new ArrayList<>();
+
+    public EmployeeRepository() {
+        roles.add("Admin");
+        roles.add("Standard");
+        roles.add("Intern");
+        designations.add("Developer");
+        designations.add("HR");
+        designations.add("Business");
+        designations.add("Sales");
+        designations.add("Finance");
+    }
     public List<Employee> getAllEmployee() {
         return mongoTemplate.findAll(Employee.class);
     }
@@ -37,5 +50,10 @@ public class EmployeeRepository {
     public List<Employee> getAllEmployeePaginated(String pageNumber, String pageSize) {
         Query query = new Query().skip(Integer.parseInt(pageNumber) * Integer.parseInt(pageSize)).limit(Integer.parseInt(pageSize));
         return mongoTemplate.find(query, Employee.class);
+    }
+    public void updateRole(String employeeId,String role) {
+        Employee employee = getOneEmployee(employeeId);
+        employee.setRole(role);
+        mongoTemplate.save(employee);
     }
 }
