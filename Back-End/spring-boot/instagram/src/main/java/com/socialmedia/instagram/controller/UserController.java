@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     @Autowired
     UserService userService;
-    @GetMapping("/userId/{userId}")
+    @GetMapping("/id/{userId}")
     public User getUserById(@PathVariable String userId) throws Exception {
         return userService.getUserById(userId);
     }
-    @GetMapping("/userName/{userName}")
+    @GetMapping("/name/{userName}")
     public User getUserByName(@PathVariable String userName) throws Exception {
         return userService.getUserByName(userName);
     }

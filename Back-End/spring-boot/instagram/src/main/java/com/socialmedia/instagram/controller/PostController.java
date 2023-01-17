@@ -13,7 +13,7 @@ public class PostController {
     @Autowired
     PostService postService;
     @PostMapping("{userId}/create/{imageUrl}")
-    public String createPost(@PathVariable String userId ,@PathVariable String imageUrl) throws Exception {
+    public String createPost(@PathVariable String userId, @PathVariable String imageUrl) throws Exception {
         postService.createPost(userId, imageUrl);
         return "Post created";
     }
