@@ -4,6 +4,7 @@ import com.socialmedia.instagram.pojo.Post;
 import com.socialmedia.instagram.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.aggregation.ArrayOperators;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
@@ -66,20 +67,24 @@ public class UserRepository {
         mongoTemplate.findAndModify(query, update, User.class);
     }
     public void deleteAllPostOfAUser(String userId) {
-        query = new Query().addCriteria(Criteria.where("userId").is(userId));
         Update update = new Update();
         List<Integer> postIds = getUserById(userId).getPostIds();
         postIds.clear();   // postIds list ah mothama delete pandre
         update.set("postIds", postIds);
         update.set("totalNumberOfPosts", 0);
         mongoTemplate.findAndModify(query, update, User.class);
+        query = new Query().addCriteria(Criteria.where("userId").is(userId));
         mongoTemplate.remove(query, Post.class);
     }
     public void deletePost(String userId, String postId) {
-//        query = new Query().addCriteria(new Criteria().andOperator(Criteria.where("userId").is(userId), Criteria.where("postId").is(postId)));
-
         query = new Query().addCriteria(Criteria.where("userId").is(userId));
-        System.out.println(query);
-        System.out.println(mongoTemplate.remove(query, Post.class));
+
+        update = new Update();
+        List <Integer> postIds = getUserById(userId).getPostIds();
+        postIds.remove(postIds.indexOf(Integer.parseInt(postId)));
+        update.set("postIds", postIds);
+        update.set("totalNumberOfPosts", getUserById(userId).getTotalNumberOfPosts() - 1);
+        mongoTemplate.findAndModify(query, update, User.class);
+        mongoTemplate.remove(query, Post.class);
     }
 }

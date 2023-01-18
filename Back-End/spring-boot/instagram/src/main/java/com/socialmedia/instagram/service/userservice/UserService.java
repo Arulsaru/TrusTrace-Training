@@ -2,10 +2,7 @@ package com.socialmedia.instagram.service.userservice;
 
 import com.socialmedia.instagram.repository.UserRepository;
 import com.socialmedia.instagram.pojo.User;
-import com.socialmedia.instagram.service.userservice.validators.CreateUserValidator;
-import com.socialmedia.instagram.service.userservice.validators.FollowUserValidator;
-import com.socialmedia.instagram.service.userservice.validators.UnFollowUserValidator;
-import com.socialmedia.instagram.service.userservice.validators.IdAndNameValidator;
+import com.socialmedia.instagram.service.userservice.validators.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +18,8 @@ public class UserService {
     FollowUserValidator followUserValidator;
     @Autowired
     UnFollowUserValidator unFollowUserValidator;
+    @Autowired
+    PostValidator postValidator;
     public User getUserById(String userId) throws Exception {
         idAndNameValidator.preValidateUserId(userId);
         return userRepository.getUserById(userId);
@@ -51,6 +50,7 @@ public class UserService {
     }
     public void deletePost(String userId, String postId) throws Exception {
         idAndNameValidator.isIdExist(userId);
+        postValidator.isPostExist(userId, postId);
         userRepository.deletePost(userId, postId);
     }
     public void deleteAllPostOfAUser(String userId) throws Exception {
