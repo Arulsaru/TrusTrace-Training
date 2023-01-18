@@ -8,6 +8,7 @@ public class UnFollowUserValidator {
     @Autowired
     IdAndNameValidator idAndNameValidator;
     public void preValidate(String userId, String userIdToFollow) throws Exception {
+        // yerkanave iruka nu paakanu
         idAndNameValidator.isIdExist(userId);
         idAndNameValidator.isIdExist(userIdToFollow);
     }

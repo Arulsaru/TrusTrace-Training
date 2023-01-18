@@ -41,4 +41,20 @@ public class UserService {
         unFollowUserValidator.preValidate(userId, userIdToUnfollow);
         userRepository.unfollowUser(userId, userIdToUnfollow);
     }
+    public void deleteUser(String userId) throws Exception {
+        idAndNameValidator.isIdExist(userId);
+        userRepository.deleteUser(userId);
+    }
+    public void createPost(String userId,String imageUrl) throws Exception {
+        idAndNameValidator.isIdExist(userId);
+        userRepository.createPost(userId, imageUrl);
+    }
+    public void deletePost(String userId, String postId) throws Exception {
+        idAndNameValidator.isIdExist(userId);
+        userRepository.deletePost(userId, postId);
+    }
+    public void deleteAllPostOfAUser(String userId) throws Exception {
+        idAndNameValidator.isIdExist(userId);
+        userRepository.deleteAllPostOfAUser(userId);
+    }
 }

@@ -33,4 +33,9 @@ public class UserController {
         userService.unFollowUser(userId, userIdToUnfollow);
         return "Unfollowed " + userIdToUnfollow;
     }
+    @DeleteMapping("id/{userId}")
+    public String deleteUser(@PathVariable String userId) throws Exception {
+        userService.deleteUser(userId);
+        return "User deleted";
+    }
 }
