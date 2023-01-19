@@ -12,7 +12,7 @@ public class User {
     private String userName;
     private long followersCount;
     private long followingCount;
-    private List<Integer> postIds;
+    private List<String> postIds;
     private long totalNumberOfPosts;
     public User() {
         this.followersCount = 0;
@@ -28,9 +28,9 @@ public class User {
     public void setFollowingCount(long followingCount) { this.followingCount = followingCount; }
     public String getUserName() { return userName; }
     public void setUserName(String userName) { this.userName = userName; }
-    public List<Integer> getPostIds() { return postIds; }
+    public List<String> getPostIds() { return postIds; }
     public long getPostIdsSize() { return postIds.size(); }
-    public void setPostId(Integer postId) { this.postIds.add(postId); }
+    public void setPostId(String postId) { this.postIds.add(postId); }
     public long getTotalNumberOfPosts() { return totalNumberOfPosts; }
     public void setTotalNumberOfPosts(long totalNumberOfPosts) { this.totalNumberOfPosts = totalNumberOfPosts; }
 }

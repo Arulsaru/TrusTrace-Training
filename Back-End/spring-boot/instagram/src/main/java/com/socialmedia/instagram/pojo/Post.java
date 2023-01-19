@@ -8,20 +8,19 @@ import java.util.Date;
 @Document(collection = "post")
 public class Post {
     private String userId;
-    private long postId;
+    @Id
+    private String postId;
     private String imageUrl;
     private long likeCount;
     private Date uploadedDateAndTime;
-//    private long noOfViews;
-    public Post(String userId,long postId, String imageUrl) {
+    public Post(String userId, String imageUrl) {
         this.userId = userId;
-        this.postId = postId;
         this.imageUrl = imageUrl;
         this.likeCount = 0;
         this.uploadedDateAndTime = new Date();
     }
-    public long getPostId() { return postId; }
-    public void setPostId(long postId) { this.postId = postId; }
+    public String getPostId() { return postId; }
+    public void setPostId(String postId) { this.postId = postId; }
     public String getImageUrl() { return imageUrl; }
     public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
     public long getLikeCount() { return likeCount; }

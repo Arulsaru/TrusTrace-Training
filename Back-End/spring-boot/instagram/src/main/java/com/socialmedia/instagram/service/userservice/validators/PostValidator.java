@@ -9,10 +9,12 @@ import java.util.List;
 public class PostValidator {
     @Autowired
     UserRepository userRepository;
-    public void isPostExist(String userId, String postId) throws Exception {
-        List<Integer> postIds = userRepository.getUserById(userId).getPostIds();
-        if(!postIds.contains(Integer.parseInt(postId))) {
-            throw new Exception("User with userId " + userId + " doesn't have the post - " + postId );
-        }
+    public void preValidatePost(String postId) throws Exception {
+       if(isPostExist(postId)) {
+           throw new Exception("Re - enter the post id correctly, Post id not found");
+       }
+    }
+    public boolean isPostExist(String postId) {
+        return userRepository.getPostById(postId) == null;
     }
 }

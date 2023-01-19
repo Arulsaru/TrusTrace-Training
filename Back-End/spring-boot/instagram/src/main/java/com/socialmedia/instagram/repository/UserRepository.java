@@ -4,14 +4,12 @@ import com.socialmedia.instagram.pojo.Post;
 import com.socialmedia.instagram.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.aggregation.ArrayOperators;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Random;
 
 @Repository
 public class UserRepository {
@@ -31,12 +29,10 @@ public class UserRepository {
     }
     public void followUser(String userId, String userIdToFollow) {
         query = new Query().addCriteria(Criteria.where("userId").is(userId));
-        System.out.println( userId + " " + getUserById(userId).getFollowingCount());
         update = new Update().set("followingCount", getUserById(userId).getFollowingCount() + 1);
         mongoTemplate.findAndModify(query, update, User.class);
 
         query = new Query().addCriteria(Criteria.where("userId").is(userIdToFollow));
-        System.out.println(userId + " " + getUserById(userIdToFollow).getFollowingCount());
         update = new Update().set("followersCount", getUserById(userIdToFollow).getFollowersCount() + 1);
         mongoTemplate.findAndModify(query, update, User.class);
     }
@@ -53,38 +49,39 @@ public class UserRepository {
         mongoTemplate.findAndModify(query, update, User.class);
     }
     public void createPost(String userId, String imageUrl) {
-
-        List<Integer> postIds = getUserById(userId).getPostIds();
-
-        Post post = new Post(userId,postIds.size() + 1, imageUrl); // creating new post
+        Post post = new Post(userId, imageUrl); // creating new post
         mongoTemplate.save(post);
 
-        Query query = new Query().addCriteria(Criteria.where("userId").is(userId));
         Update update = new Update();
-        postIds.add(postIds.size() + 1);
+        List<String> postIds = getUserById(userId).getPostIds();
+        postIds.add(post.getPostId());
         update.set("postIds", postIds);
         update.set("totalNumberOfPosts", postIds.size());
-        mongoTemplate.findAndModify(query, update, User.class);
+        mongoTemplate.findAndModify(Query.query(Criteria.where("userId").is(userId)), update, User.class);
+    }
+    public Post getPostById(String postId) {
+        return mongoTemplate.findOne(Query.query(Criteria.where("postId").is(postId)), Post.class);
     }
     public void deleteAllPostOfAUser(String userId) {
         Update update = new Update();
-        List<Integer> postIds = getUserById(userId).getPostIds();
+        List<String> postIds = getUserById(userId).getPostIds();
         postIds.clear();   // postIds list ah mothama delete pandre
         update.set("postIds", postIds);
         update.set("totalNumberOfPosts", 0);
-        mongoTemplate.findAndModify(query, update, User.class);
         query = new Query().addCriteria(Criteria.where("userId").is(userId));
+        mongoTemplate.findAndModify(query, update, User.class);
         mongoTemplate.remove(query, Post.class);
     }
     public void deletePost(String userId, String postId) {
-        query = new Query().addCriteria(Criteria.where("userId").is(userId));
-
         update = new Update();
-        List <Integer> postIds = getUserById(userId).getPostIds();
-        postIds.remove(postIds.indexOf(Integer.parseInt(postId)));
+        List <String> postIds = getUserById(userId).getPostIds();
+        postIds.remove(postId);
         update.set("postIds", postIds);
         update.set("totalNumberOfPosts", getUserById(userId).getTotalNumberOfPosts() - 1);
-        mongoTemplate.findAndModify(query, update, User.class);
-        mongoTemplate.remove(query, Post.class);
+        mongoTemplate.findAndModify(Query.query(Criteria.where("userId").is(userId)), update, User.class);
+        mongoTemplate.remove(Query.query(Criteria.where("postId").is(postId)), Post.class);
+    }
+    public void likePost(String postId) {
+        mongoTemplate.findAndModify(Query.query(Criteria.where("postId").is(postId)), Update.update("likeCount", getPostById(postId).getLikeCount() + 1), Post.class);
     }
 }
