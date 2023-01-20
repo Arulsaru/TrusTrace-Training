@@ -1,4 +1,4 @@
-package com.socialmedia.instagram.service.userservice.validators;
+package com.socialmedia.instagram.service.validators;
 
 import com.socialmedia.instagram.pojo.User;
 import com.socialmedia.instagram.repository.UserRepository;

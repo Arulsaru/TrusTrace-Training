@@ -1,7 +1,8 @@
 package com.socialmedia.instagram.controller;
 
 import com.socialmedia.instagram.pojo.Post;
-import com.socialmedia.instagram.service.userservice.UserService;
+import com.socialmedia.instagram.service.PostService;
+import com.socialmedia.instagram.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,28 +13,39 @@ import java.util.List;
 public class PostController {
     @Autowired
     UserService userService;
+
+    @Autowired
+    PostService postService;
     @PutMapping("{userId}/create/{imageUrl}")
     public String createPost(@PathVariable String userId, @PathVariable String imageUrl) throws Exception {
-        userService.createPost(userId, imageUrl);
+        postService.createPost(userId, imageUrl);
         return "Post created";
     }
     @GetMapping("{postId}")
     public Post getPostById(@PathVariable String postId) throws Exception {
-        return userService.getPostById(postId);
+        return postService.getPostById(postId);
+    }
+    @GetMapping("{pageNumber}/getAllPost/{pageSize}")
+    public List<Post> getAllPost(@PathVariable String pageNumber,@PathVariable String pageSize) throws Exception {
+        return postService.getAllPost(pageNumber, pageSize);
+    }
+    @GetMapping("{userId}/getAllPost/{pageNumber}/{pageSize}")
+    public List<Post> getAllPostOfAUser(@PathVariable String userId, @PathVariable String pageNumber, @PathVariable String pageSize) throws Exception {
+        return postService.getAllPostOfAUser(userId, pageNumber, pageSize);
     }
     @DeleteMapping("{userId}/delete/{postId}")
     public String deletePost(@PathVariable String userId, @PathVariable String postId) throws Exception {
-        userService.deletePost(userId, postId);
+        postService.deletePost(userId, postId);
         return "Post deleted";
     }
     @DeleteMapping("{userId}/deleteAll")
     public String deleteAllPostOfAUser(@PathVariable String userId) throws Exception {
-        userService.deleteAllPostOfAUser(userId);
+        postService.deleteAllPostOfAUser(userId);
         return "The post in {userId} is deleted";
     }
     @PutMapping("like/{postId}")
     public String likePost(@PathVariable String postId) throws Exception {
-        userService.likePost(postId);
+        postService.likePost(postId);
         return "Liked post..!";
     }
 }

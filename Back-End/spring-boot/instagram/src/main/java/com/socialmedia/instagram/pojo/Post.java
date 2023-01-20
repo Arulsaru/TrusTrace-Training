@@ -7,7 +7,7 @@ import java.util.Date;
 
 @Document(collection = "post")
 public class Post {
-    private String userId;
+    private final String userId;
     @Id
     private String postId;
     private String imageUrl;
@@ -25,4 +25,8 @@ public class Post {
     public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
     public long getLikeCount() { return likeCount; }
     public void setLikeCount(long likeCount) { this.likeCount = likeCount; }
+
+    public String getUserId() { return userId; }
+    public Date getUploadedDateAndTime() { return uploadedDateAndTime; }
+    public void setUploadedDateAndTime(Date uploadedDateAndTime) { this.uploadedDateAndTime = uploadedDateAndTime;  }
 }

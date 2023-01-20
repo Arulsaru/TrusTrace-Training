@@ -1,6 +1,6 @@
 package com.socialmedia.instagram.controller;
 
-import com.socialmedia.instagram.service.userservice.UserService;
+import com.socialmedia.instagram.service.UserService;
 import com.socialmedia.instagram.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,16 +22,6 @@ public class UserController {
     public String createUser(@RequestBody User user) throws Exception {
         userService.createUser(user);
         return "User with user-id " + user.getUserId() + " created";
-    }
-    @PutMapping("{userId}/follow/{userIdToFollow}")
-    public String followUser(@PathVariable String userId, @PathVariable String userIdToFollow) throws Exception {
-        userService.followUser(userId, userIdToFollow);
-        return "Followed " + userIdToFollow;
-    }
-    @PutMapping("{userId}/unfollow/{userIdToUnfollow}")
-    public String unfollowUser(@PathVariable String userId, @PathVariable String userIdToUnfollow) throws Exception {
-        userService.unFollowUser(userId, userIdToUnfollow);
-        return "Unfollowed " + userIdToUnfollow;
     }
     @DeleteMapping("id/{userId}")
     public String deleteUser(@PathVariable String userId) throws Exception {
