@@ -1,11 +1,9 @@
 package com.socialmedia.instagram.service.validators;
 
-import com.socialmedia.instagram.pojo.Following;
 import com.socialmedia.instagram.repository.FollowUnfollowRepository;
 import com.socialmedia.instagram.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.socialmedia.instagram.pojo.User;
 @Service
 public class FollowUnfollowValidator {
     @Autowired
@@ -24,7 +22,7 @@ public class FollowUnfollowValidator {
 
         if(isFollow) { // follow user
             if(isAlreadyFollowed(userId, userIdToFollowOrUnfollow)) {
-                throw new Exception(userId + " is already following " + userIdToFollowOrUnfollow + "cannot follow again");
+                throw new Exception(userId + " is already following " + userIdToFollowOrUnfollow + " cannot follow again");
             }
         } else { // unfollow user
             if(! isAlreadyFollowing(userId, userIdToFollowOrUnfollow)) {  // if the user is in the followers list it return true

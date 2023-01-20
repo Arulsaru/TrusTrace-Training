@@ -7,17 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
-
 @Repository
 public class UserRepository {
     @Autowired
     MongoTemplate mongoTemplate;
-    private Query query;
-    private Update update;
     public User getUserById(String userId) {
         return mongoTemplate.findOne(Query.query(Criteria.where("userId").is(userId)), User.class);
     }

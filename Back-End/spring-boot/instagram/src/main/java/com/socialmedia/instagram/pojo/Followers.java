@@ -14,8 +14,8 @@ public class Followers {
         this.userId = userId;
         this.followersCount = 0;
         this.followersList = new ArrayList<>();
-
     }
+
     public String getUserId() { return userId; }
     public long getFollowersCount() { return followersCount; }
     public void setFollowersCount(long followersCount) { this.followersCount = followersCount; }

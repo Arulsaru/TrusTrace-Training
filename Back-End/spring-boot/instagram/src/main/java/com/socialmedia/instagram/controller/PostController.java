@@ -13,7 +13,6 @@ import java.util.List;
 public class PostController {
     @Autowired
     UserService userService;
-
     @Autowired
     PostService postService;
     @PutMapping("{userId}/create/{imageUrl}")
@@ -25,12 +24,12 @@ public class PostController {
     public Post getPostById(@PathVariable String postId) throws Exception {
         return postService.getPostById(postId);
     }
-    @GetMapping("{pageNumber}/getAllPost/{pageSize}")
-    public List<Post> getAllPost(@PathVariable String pageNumber,@PathVariable String pageSize) throws Exception {
+    @GetMapping("getAllPost")
+    public List<Post> getAllPost(@RequestParam String pageNumber,@RequestParam String pageSize) throws Exception {
         return postService.getAllPost(pageNumber, pageSize);
     }
-    @GetMapping("{userId}/getAllPost/{pageNumber}/{pageSize}")
-    public List<Post> getAllPostOfAUser(@PathVariable String userId, @PathVariable String pageNumber, @PathVariable String pageSize) throws Exception {
+    @GetMapping("{userId}/getAllPost")
+    public List<Post> getAllPostOfAUser(@PathVariable String userId, @RequestParam String pageNumber, @RequestParam String pageSize) throws Exception {
         return postService.getAllPostOfAUser(userId, pageNumber, pageSize);
     }
     @DeleteMapping("{userId}/delete/{postId}")

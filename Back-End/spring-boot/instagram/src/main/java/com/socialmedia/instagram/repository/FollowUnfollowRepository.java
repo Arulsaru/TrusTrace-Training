@@ -17,14 +17,10 @@ public class FollowUnfollowRepository {
     MongoTemplate mongoTemplate;
     Update update;
     public List<String> getFollowingList(String userId) {
-        return mongoTemplate.findOne(
-                Query.query(Criteria.where("userId").is(userId)),
-                Following.class).getFollowingList();
+        return mongoTemplate.findOne(Query.query(Criteria.where("userId").is(userId)), Following.class).getFollowingList();
     }
     public List<String> getFollowersList(String userId) {
-        return mongoTemplate.findOne(
-                Query.query(Criteria.where("userId").is(userId)),
-                Followers.class).getFollowersList();
+        return mongoTemplate.findOne(Query.query(Criteria.where("userId").is(userId)), Followers.class).getFollowersList();
     }
     public void followUser(String userId, String userIdToFollow) {
         update = new Update();
@@ -44,13 +40,12 @@ public class FollowUnfollowRepository {
         update.inc("followingCount", -1);
         update.pull("followingList", userIdToUnfollow);
         mongoTemplate.findAndModify(
-                Query.query(Criteria.where("userId").is(userId)), update, Followers.class);
+                Query.query(Criteria.where("userId").is(userId)), update, Following.class);
 
         update = new Update();
         update.inc("followersCount", -1);
         update.pull("followersList", userId);
         mongoTemplate.findAndModify(
-                Query.query(Criteria.where("userId").is(userIdToUnfollow)), update, Following.class);
+                Query.query(Criteria.where("userId").is(userIdToUnfollow)), update, Followers.class);
     }
-
 }
