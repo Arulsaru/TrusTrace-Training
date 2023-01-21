@@ -1,6 +1,5 @@
 package com.socialmedia.instagram.service;
 
-import com.socialmedia.instagram.pojo.Post;
 import com.socialmedia.instagram.repository.FollowUnfollowRepository;
 import com.socialmedia.instagram.repository.UserRepository;
 import com.socialmedia.instagram.pojo.User;

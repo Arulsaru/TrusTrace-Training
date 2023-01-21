@@ -4,7 +4,6 @@ import com.socialmedia.instagram.pojo.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -13,10 +12,6 @@ import java.util.List;
 public class PostRepository implements QueryImpl {
     @Autowired
     MongoTemplate mongoTemplate;
-    @Autowired
-    UserRepository userRepository;
-    Query query;
-    Update update;
     public void createPost(String userId, String imageUrl) {
         mongoTemplate.save(new Post(userId, imageUrl)); // creating new post
     }

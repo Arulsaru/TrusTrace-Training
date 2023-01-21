@@ -6,6 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class User {
     private String userId;
     private String userName;
+    private long followersCount;
     public String getUserId() { return userId; }
     public void setUserId(String userId) { this.userId = userId; }
     public String getUserName() { return userName; }

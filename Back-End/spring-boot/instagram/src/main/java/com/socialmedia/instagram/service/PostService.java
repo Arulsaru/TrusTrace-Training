@@ -25,18 +25,13 @@ public class PostService {
         postValidator.isPostExist(postId);
         return postRepository.getPostById(postId);
     }
-    public void deletePost(String userId, String postId) throws Exception {
-        idAndNameValidator.isIdExist(userId);
+    public void deletePost(String postId) throws Exception {
         postValidator.preValidatePost(postId);
-        postRepository.deletePost(userId, postId);
+        postRepository.deletePost(postId);
     }
     public void deleteAllPostOfAUser(String userId) throws Exception {
         idAndNameValidator.isIdExist(userId);
         postRepository.deleteAllPostOfAUser(userId);
-    }
-    public void likePost(String postId) throws Exception {
-        postValidator.preValidatePost(postId);
-        postRepository.likePost(postId);
     }
     public List<Post> getAllPost(String pageNumber, String pageSize) { return postRepository.getAllPost(pageNumber, pageSize); }
     public List<Post> getAllPostOfAUser(String userId, String pageNumber, String pageSize) {
