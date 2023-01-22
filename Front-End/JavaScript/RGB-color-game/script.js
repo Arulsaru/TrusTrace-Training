@@ -43,6 +43,8 @@ squares.forEach((square, index) => {
             
             if(selectedSquareIndex == correctIndex) {
                 console.log(selectedSquareIndex, correctIndex);
+                convertSquareToCorrectColour(correctIndex);
+                message.innerText = 'Correct guess';
             }
             else {
                 square.style = 'pointer-event: none';
@@ -58,6 +60,16 @@ squares.forEach((square, index) => {
         }
     })
 })
+
+function convertSquareToCorrectColour(correctIndex) {
+    temp = squares[correctIndex].style.backgroundColor;
+    removeWrongIcons();
+    squares.forEach((square) => {
+        square.style = 'cursor: not-allowed';
+        square.style.backgroundColor = temp;
+    })
+    // need to disable the squares after guessing the color correctly
+}
 
 function checkNewGameOrNot() {
     return verifyNewGame;
