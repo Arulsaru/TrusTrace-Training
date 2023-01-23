@@ -1,5 +1,6 @@
 package com.socialmedia.instagram.repository;
 
+import com.socialmedia.instagram.pojo.Like;
 import com.socialmedia.instagram.pojo.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -13,7 +14,9 @@ public class PostRepository implements QueryImpl {
     @Autowired
     MongoTemplate mongoTemplate;
     public void createPost(String userId, String imageUrl) {
-        mongoTemplate.save(new Post(userId, imageUrl)); // creating new post
+        Post newPost = new Post(userId, imageUrl);
+        mongoTemplate.save(newPost); // creating new post
+        mongoTemplate.save(new Like(newPost.getPostId()));
     }
     public Post getPostById(String postId) {
         return mongoTemplate.findOne(getQueryForPostId(postId), Post.class);
