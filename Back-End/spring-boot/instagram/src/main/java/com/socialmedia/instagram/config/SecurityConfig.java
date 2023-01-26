@@ -17,15 +17,15 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
     @Bean
     public UserDetailsService userDetailsService(PasswordEncoder encoder) {
-        UserDetails admin = User.withUsername("Arulmozhi")
-                .password(encoder.encode("Arulsaru"))
-                .roles("ADMIN")
-                .build();
-        UserDetails user = User.withUsername("Swetha")
-                .password(encoder.encode("Arulswe"))
-                .roles("USER")
-                .build();
-        return new InMemoryUserDetailsManager(admin, user);
+//        UserDetails admin = User.withUsername("Arulmozhi")
+//                .password(encoder.encode("Arulsaru"))
+//                .roles("ADMIN")
+//                .build();
+//        UserDetails user = User.withUsername("Swetha")
+//                .password(encoder.encode("Arulswe"))
+//                .roles("USER")
+//                .build();
+        return new UserInfoUserDetailsService();
     }
     @Bean
     public PasswordEncoder passwordEncoder() {
