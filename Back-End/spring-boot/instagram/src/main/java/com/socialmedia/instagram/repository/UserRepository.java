@@ -7,6 +7,7 @@ import com.socialmedia.instagram.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 @Repository
 public class UserRepository implements QueryImpl {
@@ -29,5 +30,15 @@ public class UserRepository implements QueryImpl {
         mongoTemplate.remove(query, Post.class);
         mongoTemplate.remove(query, Following.class);
         mongoTemplate.remove(query, Followers.class);
+    }
+    public void updateFollowerCount(String userId, int incrementFactor) {
+        mongoTemplate.findAndModify(getQueryForUserId(userId),
+                                    new Update().inc("followersCount", incrementFactor),
+                                    User.class);
+    }
+    public void updateFollowingCount(String userId, int incrementFactor) {
+        mongoTemplate.findAndModify(getQueryForUserId(userId),
+                                    new Update().inc("followingCount", incrementFactor),
+                                    User.class);
     }
 }
