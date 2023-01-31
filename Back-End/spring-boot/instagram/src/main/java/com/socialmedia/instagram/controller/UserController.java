@@ -19,11 +19,6 @@ public class UserController {
     public User getUserByName(@PathVariable String userName) throws Exception {
         return userService.getUserByName(userName);
     }
-    @PostMapping
-    public String createUser(@RequestBody User user) throws Exception {
-        userService.createUser(user);
-        return "User with user-id " + user.getUserId() + " created";
-    }
     @DeleteMapping("id/{userId}")
     public String deleteUser(@PathVariable String userId) throws Exception {
         userService.deleteUser(userId);

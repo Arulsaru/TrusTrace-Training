@@ -9,7 +9,9 @@ public class User {
     private long followersCount;
     private long followingCount;
     private long numberOfPosts;
-    public User() {
+    public User(String userId, String userName) {
+        this.userId = userId;
+        this.userName = userName;
         this.followersCount = 0;
         this.followingCount = 0;
         this.numberOfPosts = 0;
