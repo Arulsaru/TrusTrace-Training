@@ -5,13 +5,10 @@ import com.socialmedia.instagram.pojo.User;
 import com.socialmedia.instagram.service.SignUpService;
 import com.socialmedia.instagram.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
-@RequestMapping("/signup")
+@RestController
+@RequestMapping("signup")
 public class SignUpController {
     @Autowired
     SignUpService signUpService;
@@ -19,8 +16,8 @@ public class SignUpController {
     UserService userService;
     @PostMapping
     public String signUp(@RequestBody SignUp signUp) throws Exception {
-        signUpService.signUp(signUp);
         userService.createUser(new User(signUp.getUserId(), signUp.getUserName()));
+        signUpService.signUp(signUp);
         return "Redirect to login page..";
     }
 }

@@ -1,17 +1,21 @@
 package com.socialmedia.instagram.controller;
 
+import com.socialmedia.instagram.pojo.auth.Login;
 import com.socialmedia.instagram.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 @RequestMapping("login")
 public class LoginController {
     @Autowired
     LoginService loginService;
-    public void login(@PathVariable String userId, @PathVariable String password) throws Exception {
-        loginService.login(userId, password);
+    @GetMapping
+    public String login(@RequestBody Login loginRequest) throws Exception {
+        loginService.login(loginRequest.getEmail(), loginRequest.getPassword());
+        return "Logged in successfully";
     }
 }
