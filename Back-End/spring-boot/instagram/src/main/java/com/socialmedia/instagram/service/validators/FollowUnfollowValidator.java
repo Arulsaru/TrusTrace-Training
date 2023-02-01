@@ -1,15 +1,12 @@
 package com.socialmedia.instagram.service.validators;
 
 import com.socialmedia.instagram.repository.FollowUnfollowRepository;
-import com.socialmedia.instagram.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 @Service
 public class FollowUnfollowValidator {
     @Autowired
-    IdAndNameValidator idAndNameValidator;
-    @Autowired
-    UserRepository userRepository;
+    IdNameAndEmailValidator idAndNameValidator;
     @Autowired
     FollowUnfollowRepository followUnfollowRepository;
     public void preValidate(String userId, String userIdToFollowOrUnfollow, boolean isFollow) throws Exception {

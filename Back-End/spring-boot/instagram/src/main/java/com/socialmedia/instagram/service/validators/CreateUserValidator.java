@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 public class CreateUserValidator {
     @Autowired
     UserRepository userRepository;
-    Logger logger;
     public void preValidateUser(User user) throws Exception {
         if(isIdAvailable(user.getUserId())) {
             throw new Exception("User with instagram id " + user.getUserId() + " already exists");

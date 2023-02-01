@@ -2,7 +2,7 @@ package com.socialmedia.instagram.service;
 
 import com.socialmedia.instagram.pojo.Post;
 import com.socialmedia.instagram.repository.PostRepository;
-import com.socialmedia.instagram.service.validators.IdAndNameValidator;
+import com.socialmedia.instagram.service.validators.IdNameAndEmailValidator;
 import com.socialmedia.instagram.service.validators.PostValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,13 +12,13 @@ import java.util.List;
 @Service
 public class PostService {
     @Autowired
-    IdAndNameValidator idAndNameValidator;
+    IdNameAndEmailValidator idNameAndEmailValidator;
     @Autowired
     PostRepository postRepository;
     @Autowired
     PostValidator postValidator;
     public void createPost(String userId,String imageUrl) throws Exception {
-        idAndNameValidator.isIdExist(userId);
+        idNameAndEmailValidator.isIdExist(userId);
         postRepository.createPost(userId, imageUrl);
     }
     public Post getPostById(String postId) throws Exception {
@@ -30,7 +30,7 @@ public class PostService {
         postRepository.deletePost(postId);
     }
     public void deleteAllPostOfAUser(String userId) throws Exception {
-        idAndNameValidator.isIdExist(userId);
+        idNameAndEmailValidator.isIdExist(userId);
         postRepository.deleteAllPostOfAUser(userId);
     }
     public List<Post> getAllPost(String pageNumber, String pageSize) { return postRepository.getAllPost(pageNumber, pageSize); }
