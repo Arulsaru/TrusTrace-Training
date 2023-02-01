@@ -13,4 +13,7 @@ public interface QueryImpl {
     public default Query getQueryForPostId(String postId) {
         return Query.query(Criteria.where("postId").is(postId));
     }
+    public default Query getQueryForEmail(String email) {
+        return Query.query(Criteria.where("email").is(email));
+    }
 }
