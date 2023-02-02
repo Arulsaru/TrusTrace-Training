@@ -4,11 +4,15 @@ import com.socialmedia.instagram.pojo.Followers;
 import com.socialmedia.instagram.pojo.Following;
 import com.socialmedia.instagram.pojo.Post;
 import com.socialmedia.instagram.pojo.User;
+import org.bson.BsonBinarySubType;
+import org.bson.types.Binary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -49,5 +53,15 @@ public class UserRepository implements QueryImpl {
     }
     public void editBio(String userId, String bio) {
         mongoTemplate.findAndModify(getQueryForUserId(userId), new Update().set("bio", bio), User.class);
+    }
+    public void updateProfilePicture(String userId, MultipartFile multipartFile) throws Exception {
+        Update update = new Update();
+        update.set( "profilePicture" ,new Binary(BsonBinarySubType.BINARY, multipartFile.getBytes()));
+        mongoTemplate.findAndModify(getQueryForUserId(userId), update, User.class);
+    }
+    public Binary getProfilePicture(String userId) {
+        System.out.println(getUserById(userId));
+        System.out.println(userId);
+        return getUserById(userId).getProfilePicture();
     }
 }

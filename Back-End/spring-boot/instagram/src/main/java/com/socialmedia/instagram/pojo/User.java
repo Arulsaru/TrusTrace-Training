@@ -8,6 +8,7 @@ public class User {
     private String userId;
     private String userName;
     private String bio;
+    private Binary profilePicture;
     private long followersCount;
     private long followingCount;
     private long numberOfPosts;
@@ -32,4 +33,6 @@ public class User {
     public void setFollowingCount(long followingCount) { this.followingCount = followingCount; }
     public long getNumberOfPosts() { return numberOfPosts; }
     public void setNumberOfPosts(long numberOfPosts) { this.numberOfPosts = numberOfPosts; }
+    public Binary getProfilePicture() { return profilePicture; }
+    public void setProfilePicture(Binary profilePicture) { this.profilePicture = profilePicture; }
 }

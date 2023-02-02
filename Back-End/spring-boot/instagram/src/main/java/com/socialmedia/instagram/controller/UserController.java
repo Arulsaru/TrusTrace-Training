@@ -2,8 +2,10 @@ package com.socialmedia.instagram.controller;
 
 import com.socialmedia.instagram.service.UserService;
 import com.socialmedia.instagram.pojo.User;
+import org.bson.types.Binary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -29,6 +31,14 @@ public class UserController {
     public String editBio(@PathVariable String userId, @PathVariable String bio) throws Exception {
         userService.editBio(userId, bio);
         return "The altered bio is " + bio;
+    }
+    @PostMapping("{userId}/uploadImage")
+    public void updateProfilePicture(@PathVariable String userId, @RequestParam("file") MultipartFile multipartFile) throws Exception {
+        userService.updateProfilePicture(userId, multipartFile);
+    }
+    @GetMapping("{userId}/getImage")
+    public Binary getProfilePicture(@PathVariable String userId) throws Exception {
+        return userService.getProfilePicture(userId);
     }
     @DeleteMapping("id/{userId}")
     public String deleteUser(@PathVariable String userId) throws Exception {

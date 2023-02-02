@@ -7,8 +7,10 @@ import com.socialmedia.instagram.service.validators.CreateUserValidator;
 import com.socialmedia.instagram.service.validators.FollowUnfollowValidator;
 import com.socialmedia.instagram.service.validators.IdNameAndEmailValidator;
 import com.socialmedia.instagram.service.validators.PostValidator;
+import org.bson.types.Binary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -42,5 +44,16 @@ public class UserService {
     public void deleteUser(String userId) throws Exception {
         idNameAndEmailValidator.isIdExist(userId);
         userRepository.deleteUser(userId);
+    }
+    public void updateProfilePicture(String userId, MultipartFile multipartFile) throws Exception{
+        userRepository.updateProfilePicture(userId, multipartFile);
+    }
+    public Binary getProfilePicture(String userId) throws Exception {
+        Binary obj = userRepository.getProfilePicture(userId);
+        System.out.println(obj);
+        if(obj == null) {
+            throw new Exception("Profile picture is empty... try updating profile picture");
+        }
+        return obj;
     }
 }
