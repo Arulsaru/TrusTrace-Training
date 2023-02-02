@@ -5,6 +5,8 @@ import com.socialmedia.instagram.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("user")
 //@CrossOrigin("*")      // for cors policy
@@ -18,6 +20,10 @@ public class UserController {
     @GetMapping("/name/{userName}")
     public User getUserByName(@PathVariable String userName) throws Exception {
         return userService.getUserByName(userName);
+    }
+    @GetMapping("getAllUsers")
+    public List<User> getAllUsers() {
+        return userService.getAllUser();
     }
     @DeleteMapping("id/{userId}")
     public String deleteUser(@PathVariable String userId) throws Exception {

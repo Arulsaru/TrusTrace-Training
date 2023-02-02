@@ -9,6 +9,9 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
 @Repository
 public class UserRepository implements QueryImpl {
     @Autowired
@@ -18,6 +21,9 @@ public class UserRepository implements QueryImpl {
     }
     public User getUserByName(String userName) {
         return mongoTemplate.findOne(getQueryForUserName(userName), User.class);
+    }
+    public List<User> getAllUsers() {
+        return mongoTemplate.findAll(User.class);
     }
     public void createUser(User user) {
         mongoTemplate.save(user);

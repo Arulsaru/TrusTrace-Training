@@ -10,6 +10,8 @@ import com.socialmedia.instagram.service.validators.PostValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
     @Autowired
@@ -25,6 +27,9 @@ public class UserService {
     public User getUserByName(String userName) throws Exception {
         idNameAndEmailValidator.preValidateUserName(userName);
         return userRepository.getUserByName(userName);
+    }
+    public List<User> getAllUser() {
+        return userRepository.getAllUsers();
     }
     public void createUser(User user) throws Exception {
         createUserValidator.preValidateUser(user);
