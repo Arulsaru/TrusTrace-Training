@@ -25,6 +25,11 @@ public class UserController {
     public List<User> getAllUsers() {
         return userService.getAllUser();
     }
+    @PutMapping("{userId}/editBio/{bio}")
+    public String editBio(@PathVariable String userId, @PathVariable String bio) throws Exception {
+        userService.editBio(userId, bio);
+        return "The altered bio is " + bio;
+    }
     @DeleteMapping("id/{userId}")
     public String deleteUser(@PathVariable String userId) throws Exception {
         userService.deleteUser(userId);

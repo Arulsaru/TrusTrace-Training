@@ -35,6 +35,10 @@ public class UserService {
         createUserValidator.preValidateUser(user);
         userRepository.createUser(user);
     }
+    public void editBio(String userId, String bio) throws Exception {
+        idNameAndEmailValidator.isIdExist(userId);
+        userRepository.editBio(userId, bio);
+    }
     public void deleteUser(String userId) throws Exception {
         idNameAndEmailValidator.isIdExist(userId);
         userRepository.deleteUser(userId);

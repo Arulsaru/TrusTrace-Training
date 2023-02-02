@@ -47,4 +47,7 @@ public class UserRepository implements QueryImpl {
                                     new Update().inc("followingCount", incrementFactor),
                                     User.class);
     }
+    public void editBio(String userId, String bio) {
+        mongoTemplate.findAndModify(getQueryForUserId(userId), new Update().set("bio", bio), User.class);
+    }
 }
