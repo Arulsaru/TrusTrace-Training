@@ -1,4 +1,4 @@
-package com.socialmedia.instagram.controller;
+package com.socialmedia.instagram.controller.auth;
 
 import com.socialmedia.instagram.pojo.auth.SignUp;
 import com.socialmedia.instagram.pojo.User;
