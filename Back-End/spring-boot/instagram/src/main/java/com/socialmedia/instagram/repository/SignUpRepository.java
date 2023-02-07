@@ -12,6 +12,9 @@ public class SignUpRepository implements QueryImpl{
     public void signUp(SignUp signUp) {
         mongoTemplate.save(signUp);
     }
+    public SignUp getUserByUserName(String userName) {
+        return mongoTemplate.findOne(getQueryForUserName(userName), SignUp.class);
+    }
     public SignUp getUserByEmail(String email) {
         return mongoTemplate.findOne(getQueryForEmail(email), SignUp.class);
     }

@@ -2,8 +2,6 @@ package com.socialmedia.instagram.pojo.auth;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.Date;
-
 @Document(collection="accounts")
 public class SignUp {
     private String userId;
@@ -11,16 +9,14 @@ public class SignUp {
     private String email;
     private String phoneNumber;
     private String password;
-//    private final Date accountCreatedDateAndTime;
-//    private String userType;
-//    private String alternateMobileNumber;
-    public SignUp(String userId, String userName, String email, String phoneNumber, String password) {
+    private String roles;
+    public SignUp(String userId, String userName, String email, String phoneNumber, String password, String roles) {
         this.userId = userId;
         this.userName = userName;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.password = password;
-//        this.accountCreatedDateAndTime = new Date();
+        this.roles = roles;
     }
     public String getUserId() { return userId; }
     public void setUserId(String userId) { this.userId = userId; }
@@ -32,5 +28,6 @@ public class SignUp {
     public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
-//    public Date getAccountCreatedDateAndTime() { return accountCreatedDateAndTime; }
+    public String getRoles() { return roles; }
+    public void setRoles(String roles) { this.roles = roles; }
 }

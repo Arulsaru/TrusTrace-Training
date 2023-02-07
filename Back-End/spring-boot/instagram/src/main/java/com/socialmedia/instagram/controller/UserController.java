@@ -4,6 +4,7 @@ import com.socialmedia.instagram.service.UserService;
 import com.socialmedia.instagram.pojo.User;
 import org.bson.types.Binary;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -20,6 +21,7 @@ public class UserController {
         return userService.getUserById(userId);
     }
     @GetMapping("/name/{userName}")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public User getUserByName(@PathVariable String userName) throws Exception {
         return userService.getUserByName(userName);
     }
