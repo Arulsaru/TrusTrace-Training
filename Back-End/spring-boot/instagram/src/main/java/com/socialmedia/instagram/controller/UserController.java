@@ -17,6 +17,7 @@ public class UserController {
     @Autowired
     UserService userService;
     @GetMapping("/id/{userId}")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public User getUserById(@PathVariable String userId) throws Exception {
         return userService.getUserById(userId);
     }
