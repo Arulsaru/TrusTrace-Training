@@ -1,9 +1,13 @@
 package com.socialmedia.instagram.pojo.auth;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Document(collection="accounts")
 public class SignUp {
+    @Autowired
+    PasswordEncoder passwordEncoder;
     private String userId;
     private String userName;
     private String email;
