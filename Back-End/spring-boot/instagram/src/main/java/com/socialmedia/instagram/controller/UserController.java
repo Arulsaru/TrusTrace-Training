@@ -22,7 +22,6 @@ public class UserController {
         return userService.getUserById(userId);
     }
     @GetMapping("/name/{userName}")
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public User getUserByName(@PathVariable String userName) throws Exception {
         return userService.getUserByName(userName);
     }

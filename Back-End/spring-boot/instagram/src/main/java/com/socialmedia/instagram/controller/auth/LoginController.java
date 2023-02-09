@@ -1,6 +1,7 @@
 package com.socialmedia.instagram.controller.auth;
 
 import com.socialmedia.instagram.dto.AuthRequest;
+import com.socialmedia.instagram.dto.JwtResponse;
 import com.socialmedia.instagram.pojo.auth.Login;
 import com.socialmedia.instagram.service.JwtService;
 import com.socialmedia.instagram.service.LoginService;
@@ -26,10 +27,11 @@ public class LoginController {
         return "Logged in successfully";
     }
     @PostMapping("/authenticate")
-    public String authenticateAndGetToken(@RequestBody AuthRequest authRequest) {
+    public JwtResponse authenticateAndGetToken(@RequestBody AuthRequest authRequest) {
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUserName(), authRequest.getPassword()));
         if(authentication.isAuthenticated()) {
-            return jwtService.generateToken(authRequest.getUserName());
+            String token = jwtService.generateToken(authRequest.getUserName());
+            return new JwtResponse(token);
         } else {
             throw new UsernameNotFoundException("Invalid user request");
         }
