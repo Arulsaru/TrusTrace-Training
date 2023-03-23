@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
     selector: 'app-directives',
@@ -11,6 +11,7 @@ export class DirectivesComponent implements OnInit {
     isClicked: boolean = false;
     color: string = '';
     names: string[] = ['Arulmozhi', 'Preethi', 'Gowtham'];
+    @ViewChild('bluecolor') bluee!: HTMLElement;
 
     changeToClicked(): void {
         this.isClicked = !this.isClicked;
@@ -27,5 +28,7 @@ export class DirectivesComponent implements OnInit {
     blue(): void {
         this.color = 'blue'
     }
+
+
 
 }

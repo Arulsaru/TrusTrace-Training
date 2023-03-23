@@ -10,6 +10,7 @@ import { ChildComponent } from './child/child.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
 import { BindingComponent } from './binding/binding.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ServiceComponent } from './service/service.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ParentComponent,
     ChildComponent,
     ReactiveFormsComponent,
-    BindingComponent
+    BindingComponent,
+    ServiceComponent
   ],
   imports: [
     BrowserModule,

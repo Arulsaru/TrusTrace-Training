@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
+import { formType } from "../interface/form-type.interface";
 
 @Component({
     selector: 'app-reactive-forms',
@@ -21,7 +22,7 @@ export class ReactiveFormsComponent {
 
     setValue(): void {
         this.registrationForm.setValue({
-            userName: 'Arulmozhi',
+            userName: '12',
             rollNumber: '112',
             email: 'arulmozhi.ec19@bitsathy.ac.in',
             address: {
