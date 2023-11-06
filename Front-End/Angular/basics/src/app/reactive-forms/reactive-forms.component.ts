@@ -9,26 +9,26 @@ import { formType } from "../interface/form-type.interface";
 })
 
 export class ReactiveFormsComponent {
-    registrationForm = new FormGroup({
+    registrationForm = new FormGroup<formType>({
         userName: new FormControl(''),
         rollNumber: new FormControl(''),
         email: new FormControl(''),
         address: new FormGroup({
             state: new FormControl(''),
             city: new FormControl(''),
-            pinCode: new FormControl('')
+            pinCode: new FormControl(0)
         })
     })
 
     setValue(): void {
         this.registrationForm.setValue({
-            userName: '12',
+            userName: 'Arulmozhi',
             rollNumber: '112',
             email: 'arulmozhi.ec19@bitsathy.ac.in',
             address: {
                 state: 'Tamil Nadu',
                 city: 'Dharmapuri',
-                pinCode: '636701'
+                pinCode: 636701
             }
         })
     }

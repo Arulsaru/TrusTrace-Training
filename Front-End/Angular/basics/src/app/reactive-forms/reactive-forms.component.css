@@ -2,3 +2,27 @@
     margin: 10px 0px 0px 0px !important;
     width: 500px;
 }
+
+.username {
+    font-size: var(--twelve);
+}
+
+.rollnumber {
+    font-size: var(--twelve);
+}
+
+.email {
+    font-size: var(--thirteen);
+}
+
+.state {
+    font-size: var(--fourteen);
+}
+
+.city {
+    font-size: var(--fifteen);
+}
+
+.pincode {
+    font-size: var(--sixteen);
+}

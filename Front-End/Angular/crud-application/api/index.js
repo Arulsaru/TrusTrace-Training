@@ -26,7 +26,7 @@ app.get('/employees', (req, res) => {
     const employees = parseJSON();
     res.json(employees)
     return false;
-})
+})  
 
 app.get('/employees/pagination', (req, res) => {
     const employees = parseJSON();

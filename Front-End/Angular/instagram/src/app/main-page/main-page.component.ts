@@ -9,12 +9,24 @@ import { UserService } from '../service/user.service';
 })
 export class MainPageComponent implements OnInit {
   userDatas: userType[] = [];
+  token: String | null = sessionStorage.getItem("token");
   constructor(private service: UserService) {}
 
   ngOnInit(): void {
-    this.service.getAllUsers().subscribe((res: userType[]) => {
-      this.userDatas = res;
-    });
+    // this.service.getUserById("swe").subscribe((res) => {
+    //   console.log(res);
+    // });
+
+    this.service.generateToken().subscribe(res => {
+      console.log(res);
+    })
+
+    // this.service.getUserByName("Swetha").subscribe((res) => {
+    //   console.log(res);
+    // });
+    // this.service.getAllUsers().subscribe((res) => {
+    //   console.log(res);
+    // })
   }
 
 }

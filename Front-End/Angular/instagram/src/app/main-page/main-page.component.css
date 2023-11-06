@@ -1,0 +1,17 @@
+body {
+    background-color: darkblue;
+}
+
+#profile-picture {
+    position: absolute;
+    top: 15px;
+    right: 40px;
+}
+
+.panel-column {
+    width: 400px;
+}
+
+.icons {
+    outline: none;       
+}
